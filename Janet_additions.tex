@@ -1,0 +1,156 @@
+
+Cards in a deck: 52.  \hfill \\
+Ace, 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King \hfill \\
+
+
+\section{Probability Formulas}
+
+\begin{description}
+	\item[Misc.] 
+		\begin{align*}
+		\Phi &= \Omega^c   \mbox{\tiny{(Lecture 4)}}  \\
+		\cap E_i &= (\cup E_i^c)^c       \mbox{\tiny{(Lecture 4)}}  \\
+		%\[ A \cup A^{c} =U  \]
+		%\[ A \cap A^{c} =\Omega  \]
+		A \cup A^{c} &= \Phi  
+		\end{align*}
+
+		
+		\textbf{DeMorgan's laws}, pg 26:  You can distribute/factor a complement if you switch the $\cup$ or $\cap$ \\
+		\[  (A \cup B)^c = A^c \cap B^c  \]
+		\begin{center} \tiny{so $P((A \cup B)^c) = P(A^c \cap B^c)$}   \end{center}  
+		\[   (A \cap B)^c = A^c \cup B^c  \]
+		
+		Goal: you have one complement in your "and" space and don't want it.  $A \cap B^c = A -(A \cap B)$  Use Venn diagrams to see.   (in pg 37 proof)
+		
+		What about $A \cup B^c$?  ???
+		\hfill \\
+		\begin{align*}
+		P(A \cap B) + P(A^c \cap B) &= P(B)  \mbox{   \tiny{(in prob 2.4.5 pg 37)}}   \\
+		P(A \cup B) + P(A^c \cup B) &= 1  \mbox{   \tiny{(logically b/c $P(A) + P(A^c) = 1$}}  \\
+		\end{align*}
+		
+	\item[Mutually exclusive] ${E_1}, {E_2}$ are \textit{mutually exclusive} if 
+        		$P({E_1} \cup {E_2} \cup {E_3} \cup ...) = P({E_1}) + P({E_2}) + P({E_3}) + ...$   \\
+		%\begin{flushright} \tiny{(Lec 2, L\&M 2.3)} \end{flushright}
+		{ \tiny (Lec 2, L\&M 2.3)}.   \\
+		Note that then $ P(E_i \cap E_j) = 0 $
+\end{description}
+
+    \begin{description}
+    	\item[Mutually exclusive and exhaustive] 
+	\[ \mbox{For } E_1, E_2, \dots:  \]
+	\[ E_i \cap E_j = \Phi \mbox{ and } \Omega = E_1 \cup E_2 \cup \dots \]
+	\[ \mbox{ Mutually exclusive + exhaustive = partition } \]
+    \end{description}
+    
+    \begin{description}
+    \item[The fundamental laws of set algebra] {\tiny (Wikipedia)}
+    
+    \textbf{Commutative Laws}
+    	\begin{align*}
+		A \cup B = B \cup A   \\
+		A \cap B = B \cap A   \\
+	\end{align*}
+     % \item[Associative laws]
+     \textbf{Associative Laws}
+    	 \begin{align*}
+	   (A \cup B) \cup C = A \cup (B \cup C) \\
+	   (A \cap B) \cap C = A \cap (B \cap C) \\
+	\end{align*}
+      \textbf{Distributive laws}
+	  \[ A \cup (B \cap C) = (A \cup B) \cap (A \cup C)   \]
+	  \[ A \cap (B \cup C) = (A \cap B) \cup (A \cap C) \]
+    \end{description}
+			
+	
+    \begin{description}	
+        \item[Basic probability formulae] 
+           \begin{gather*} 
+        		\Omega = E \cup E^c \\
+        		E \cap E^c = \Phi \\
+      		\mbox{ so }  P(E^c) + P(E) = P(\Omega) = 1, or P(E^c) = 1-P(E) \\
+        		\mbox{ and} P(D)  \leq 1 \mbox{, since all probabilities are non-negative} \\
+           E \cup F = E \cup (E^c \cap F)  \\
+            \mbox{and E and $E^c$ are disjoint, so you can break them apart} \\            
+           P(E \cup F) = P(E) + P(E^c) \cap F \\
+           \mbox{so } P(E \cup F) + P(E \cap F) =  \\ P(E) + P(E^c \cap F) + P(E \cap F) = P(E) + P(F) \\
+           \mbox{restated: } P(E \cup F) + P(E \cap F) = P(E) + P(F) \\
+           \end{gather*}  
+    \end{description}
+    
+\begin{description}
+\item[Law of total probability] See Lec2, L\&M 2.3 \newline
+For events E, F of a partition, you can build F or P(F) from the overlaps of the events E with P.
+	\[ F = U_i(F \cap E_i)  \]
+	\[ P(F) = \sum_{n=1} P(F \cap E_i) \]
+Special case: If $E_i$ is the \textit{i}th outcome in a countable $\Omega$, $F \cap E_i = Ei$ 
+or $F \cap E_i = \Phi$ and $P(F) = \sum_{i \in F} P(E_i)$. 
+
+\item[The inclusion and exclusion formula] (The overlapping tiles sum)
+If you want to get the $\cup$ of some events, sum all the areas, subtract out the singly over lapping bits, add back the tripply overlapping bits, subtract off the quadruply overlapping bits, etc.  Go as far as the number of Es you have. 
+All cups on the left side and caps on the right. 
+	\[\mbox{2 items: } P(D \cup E) = P(D) + P(E) - P(D \cap E) \]
+	\begin{align*}
+	\mbox{3 items: }   
+	P(C \cup D \cup E) = P(C) + P(D) + P(E) \\
+	\quad - P(C \cap D) - P(D \cap E) - P(E \cap C) \\
+	\quad + P(C \cap D \cap E) \\
+	\end{align*}
+
+\item[Review ways of breaking apart $\cup$ \& and $\cap$] \hfill \\
+
+ You can relate cap and cup {\tiny by Theorem 2.3.6 (pg 28)}:
+$P(A \cup B) = P(A) + P(B) - P(A \cup B)$, which can be re-arranged.  \hfill \\
+\hfill \\
+$\cup$ covers two areas.  If they are independent you can separate them with pluses.  If you know about their $\cap$ you can deduce their $\cup$.  \hfill \\
+\hfill \\
+$\cap$ is the
+
+\item[The chain rule]  The reverse of Bayes' rule. If you don't want to use intersections, you can use only conditional probabilities to calculate an intersection.  {\tiny L\&M pg 43.}
+If $P(E_1 \cap E_2 \cap \dots \cap E_n) > 0$, \hfill \\
+$P(E_1 \cap E_2 \cap \dots \cap E_n)$  \hfill \\ 
+$= P(E_1)P(E_2 \mid E1)P(E_3 \mid E1 \cap E2) \dots P(E_n \mid E_1 \cap E_2 \cap \dots \cap E_n)$.
+ Note you could put $E_1, E_2, \dots$ in any order you want (commutative rule). 
+ \hfill \\
+Review: if you want to break apart unions, you think of the tiles overlapping and subtracting/adding sections intersections back.  If you want to break apart intersections, you can use the chain rule to break it into conditional probabilities.  
+ \hfill \\
+ 
+ \item[Law of total probability] Lecture 5, L\&M pg 43   \hfill \\
+ INCOMPLETE
+  \hfill \\
+ 
+\item[Relating conditional probability \& intersection]     L\&M pg 34, L5. \hfill \\
+If P(B) \textgreater 0:
+$P(A \mid B) = \frac{ P(A \cap B) }{ P(B) } $  \hfill \\
+How to remember if you got the $\mid$ and $\cap$ in the right order: visualize the and inside the circle.
+
+\hfill \\
+This gives you a way to relate intersections and conditional probabilities:
+$P(A \cap B) = P(A \mid B)P(B)$  (pg. 34)
+
+\item[Some more tricks]
+	%\begin{align*}
+	Recognize the relation between $A \cup B$  and $A \cap B$ even if there is something like $(A \cup B) \cap (A \cup B)^c$.  You can pull the c inside and write the $P(A) + P(B)$ type statement.
+	%\end{align*}
+	
+\item[A+B and A-B without P involved]
+Generally avoid adding sets.  Adding and subtracting probability of sets is great though. \hfill \\
+With that warning, The definition of $A-B$ is $A \cap B^c$.  Note that $P(A-B) \neq P(A) - P(B)$.  Wikipedia uses \textbackslash  for $-$ in sets. \hfill \\ 
+E suggests always avoiding + when doing math of sets.  It's fine to have + when probability is involved, but adding sets doesn't make a lot of sense.  You could call $\cup$ addition, but that is confusing.  
+  
+
+
+
+
+
+\end{description}
+    
+    
+    
+    
+    
+    
+    
+    
+    
