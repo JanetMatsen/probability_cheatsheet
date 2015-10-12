@@ -30,42 +30,45 @@ Ace, 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King \hfill \\
 		P(A \cup B) + P(A^c \cup B) &= 1  \mbox{   \tiny{(logically b/c $P(A) + P(A^c) = 1$}}  \\
 		\end{align*}
 		
-	\item[Mutually exclusive] ${E_1}, {E_2}$ are \textit{mutually exclusive} if 
+\end{description}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Mutually exclusive and/or exhaustive}
+    \begin{description}
+    
+    	\item[Mutually exclusive] ${E_1}, {E_2}$ are \textit{mutually exclusive} if 
         		$P({E_1} \cup {E_2} \cup {E_3} \cup ...) = P({E_1}) + P({E_2}) + P({E_3}) + ...$   \\
 		%\begin{flushright} \tiny{(Lec 2, L\&M 2.3)} \end{flushright}
 		{ \tiny (Lec 2, L\&M 2.3)}.   \\
 		Note that then $ P(E_i \cap E_j) = 0 $
-\end{description}
-
-    \begin{description}
+    
+    
     	\item[Mutually exclusive and exhaustive] 
 	\[ \mbox{For } E_1, E_2, \dots:  \]
-	\[ E_i \cap E_j = \Phi \mbox{ and } \Omega = E_1 \cup E_2 \cup \dots \]
+	\[ E_i \cap E_j = \Phi \mbox{, } P(E_i \cap E_j) = 0 \mbox{, and } \Omega = E_1 \cup E_2 \cup \dots \]
 	\[ \mbox{ Mutually exclusive + exhaustive = partition } \]
     \end{description}
-    
-    \begin{description}
-    \item[The fundamental laws of set algebra] {\tiny (Wikipedia)}
-    
-    \textbf{Commutative Laws}
-    	\begin{align*}
-		A \cup B = B \cup A   \\
-		A \cap B = B \cap A   \\
-	\end{align*}
-     % \item[Associative laws]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%    
+\subsection{The fundamental laws of set algebra} {\tiny (Wikipedia)}
+
+	\textbf{Commutative Laws}
+		\begin{align*}
+			A \cup B = B \cup A   \\
+			A \cap B = B \cap A   \\
+		\end{align*}
      \textbf{Associative Laws}
-    	 \begin{align*}
-	   (A \cup B) \cup C = A \cup (B \cup C) \\
-	   (A \cap B) \cap C = A \cap (B \cap C) \\
-	\end{align*}
-      \textbf{Distributive laws}
-	  \[ A \cup (B \cap C) = (A \cup B) \cap (A \cup C)   \]
-	  \[ A \cap (B \cup C) = (A \cap B) \cup (A \cap C) \]
-    \end{description}
-			
+		\begin{align*}
+			(A \cup B) \cup C = A \cup (B \cup C) \\
+			(A \cap B) \cap C = A \cap (B \cap C) \\
+		\end{align*}
+	\textbf{Distributive laws}
+		\[ A \cup (B \cap C) = (A \cup B) \cap (A \cup C)   \]
+		\[ A \cap (B \cup C) = (A \cap B) \cup (A \cap C) \]
+    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%			
 	
-    \begin{description}	
-        \item[Basic probability formulae] 
+\subsection{Basic probability formulae}
            \begin{gather*} 
         		\Omega = E \cup E^c \\
         		E \cap E^c = \Phi \\
@@ -77,7 +80,6 @@ Ace, 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King \hfill \\
            \mbox{so } P(E \cup F) + P(E \cap F) =  \\ P(E) + P(E^c \cap F) + P(E \cap F) = P(E) + P(F) \\
            \mbox{restated: } P(E \cup F) + P(E \cap F) = P(E) + P(F) \\
            \end{gather*}  
-    \end{description}
     
 \begin{description}
 \item[Law of total probability] See Lec2, L\&M 2.3 \newline
@@ -107,22 +109,17 @@ $\cup$ covers two areas.  If they are independent you can separate them with plu
 \hfill \\
 $\cap$ is the
 
-\item[The chain rule]  The reverse of Bayes' rule. If you don't want to use intersections, you can use only conditional probabilities to calculate an intersection.  {\tiny L\&M pg 43.}
-If $P(E_1 \cap E_2 \cap \dots \cap E_n) > 0$, \hfill \\
-$P(E_1 \cap E_2 \cap \dots \cap E_n)$  \hfill \\ 
-$= P(E_1)P(E_2 \mid E1)P(E_3 \mid E1 \cap E2) \dots P(E_n \mid E_1 \cap E_2 \cap \dots \cap E_n)$.
- Note you could put $E_1, E_2, \dots$ in any order you want (commutative rule). 
- \hfill \\
-Review: if you want to break apart unions, you think of the tiles overlapping and subtracting/adding sections intersections back.  If you want to break apart intersections, you can use the chain rule to break it into conditional probabilities.  
- \hfill \\
- 
- \item[Law of total probability] Lecture 5, L\&M pg 43   \hfill \\
- INCOMPLETE
-  \hfill \\
- 
+\end{description}
+
+%%%%%%%%%%%%%%%%%%%%%
+\section{Conditional probability}
+
+\begin{description}
 \item[Relating conditional probability \& intersection]     L\&M pg 34, L5. \hfill \\
 If P(B) \textgreater 0:
-$P(A \mid B) = \frac{ P(A \cap B) }{ P(B) } $  \hfill \\
+	\begin{align*}
+		P(A \mid B) = \frac{ P(A \cap B) }{ P(B) }   \hfill \\
+	\end{align*}
 How to remember if you got the $\mid$ and $\cap$ in the right order: visualize the and inside the circle.
 
 \hfill \\
@@ -138,13 +135,51 @@ $P(A \cap B) = P(A \mid B)P(B)$  (pg. 34)
 Generally avoid adding sets.  Adding and subtracting probability of sets is great though. \hfill \\
 With that warning, The definition of $A-B$ is $A \cap B^c$.  Note that $P(A-B) \neq P(A) - P(B)$.  Wikipedia uses \textbackslash  for $-$ in sets. \hfill \\ 
 E suggests always avoiding + when doing math of sets.  It's fine to have + when probability is involved, but adding sets doesn't make a lot of sense.  You could call $\cup$ addition, but that is confusing.  
+\end{description}
+
+\subsection{The chain rule}
+If you don't want to use intersections, you can use only conditional probabilities to calculate an intersection.  {\tiny L\&M pg 43.}
+If $P(E_1 \cap E_2 \cap \dots \cap E_n) > 0$, \hfill \\
+$P(E_1 \cap E_2 \cap \dots \cap E_n)$  \hfill \\ 
+$= P(E_1)P(E_2 \mid E1)P(E_3 \mid E1 \cap E2) \dots P(E_n \mid E_1 \cap E_2 \cap \dots \cap E_n)$.
+ Note you could put $E_1, E_2, \dots$ in any order you want (commutative rule).  Also note that there is no cool rul for $P(A \cup B \cup C)$ \hfill \\ 
+ \hfill \\
+Review: if you want to break apart unions, you think of the tiles overlapping and subtracting/adding sections intersections back.  If you want to break apart intersections, you can use the chain rule to break it into conditional probabilities.  
+ \hfill \\
+ 
+ \subsection{Law of total probability} {\tiny Lecture 5, L\&M pg 43}   \hfill \\
+ If you have mutually exclusive and exhaustive events $H_i$, and $i = 1, \dots k$.  Mutually exclusive \& exhaustive means $\sum_{i=1}^k P(H_i) = 1$.  Note also $H_i \cap H_j = \Phi$, $P(H_i \cap H_j) = 0$  
+ Since $D = (D \cap H_1) \cup (D \cap H_2) \cup \dots \cup  (D \cap H_k)$
+	\begin{align*}
+ 		P(D) = \sum_{j=1}^k P(D \mid H_j) P(H_j) 
+  	\end{align*}
+We are summing across outcomes, and weighting the sums by the likelyhood of the sub-outcomes.
+ 
+ \subsection{Bayes' formula} {\tiny L\&M p48, Lecture 5}
+ Assume $H_i$, $i = 1, \dots, k$ as above (mutually exclusive and exhaustive), and $D$ with $P(D) > 0$.
+ 	\begin{align*}
+		P(H_j \mid D) = \frac{P(H_j \cap D)}{P(D)} = \frac{P(D \mid H_j) P(H_j) }{\sum_{i=1}^k P(D \mid H_j) P(H_j) }
+	\end{align*}
+$P(\mbox{have antigen A} \mid \mbox{have antigen B}) = P(AB)/(P(B) + P(AB)) $
+	
+%	\begin{align*)
+%		$A \cap B$
+		%P(H_j \mix D) = \frac{P(H_j \cap D)}{P(D}
+%	\end{align*}
+
+%%%%%%%%%%%%
+\section{Combinatorics}
+
+\subsection{Multiplication Rule} for counting ordered sequences
+If A can be performed in $m$ different ways and operation B in $n$ different ways, the sequence (operation A, operation B) can be performed in $m*n$ different ways. 
+
+\subsection{Permutations} for when all objects are distinct.
+The number of permutations of length $k$ that can be formed from a set of $n$ distinct elements, repetitions NOT allowed, is denoted by the symbol ${_n}P_k$ where ${_n}P_k = n(n-1)(n-2) \dots (n - k - 1) = \frac{n!}{(n-k)!}$ 
+
+Corollary: the number of ways to permute an entire set of n distinct objects in ${_n}P_n = n!$ 
+
   
 
-
-
-
-
-\end{description}
     
     
     
