@@ -2,8 +2,13 @@
 Cards in a deck: 52.  \hfill \\
 Ace, 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King \hfill \\
 
+\section{Problem solving tips}
+Recognize complicated versions of simple formulas.  E.g. $P(A \mid B) = P(A \cap B)/P(B)$ with an $A$ or $B$ like $(A \cup B^c)$ \hfill \\
+\textbf{At least} is a trigger for 1 $-$ probability of all items.  E.g. probability you will roll at least one 6 in 3 die rolls $= 1 - P(\mbox{no 6s rolled}) = 1 - (5/6)^3$. 
+
 
 \section{Probability Formulas}
+\smallskip \hrule height 2pt \smallskip
 
 \begin{description}
 	\item[Misc.] 
@@ -113,6 +118,7 @@ $\cap$ is the
 
 %%%%%%%%%%%%%%%%%%%%%
 \section{Conditional probability}
+\smallskip \hrule height 2pt \smallskip
 
 \begin{description}
 \item[Relating conditional probability \& intersection]     L\&M pg 34, L5. \hfill \\
@@ -166,24 +172,69 @@ $P(\mbox{have antigen A} \mid \mbox{have antigen B}) = P(AB)/(P(B) + P(AB)) $
 %		$A \cap B$
 		%P(H_j \mix D) = \frac{P(H_j \cap D)}{P(D}
 %	\end{align*}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Independent and disjoint are not equivalent}
+The definition of independence is $P(A \cap B) = P(A)*P(B)$.  The definition of mutually exclusive is $P(A \cap B) = 0$.   If $A$ and $B$ have nonzero probability then these can't both be true.  
+
+\textbf{Independent}: Two events A and B are said to be independent if $P(A \cap B) = P(A)*P(B)$ {\tiny (pg 53)} Note that if $A$ and $B$ are independent, $A^c$ and $B^c$ are independent. {\tiny pg54 ex 2.5.2.}  I don't believe you can visualize independence in a Venn diagram. \hfill \\ 
+$P(A \cup B) = P(A) + P(B) - P(A \cap B) = P(A) + P(B) - P(A)*P(B)$ \hfill \\
+$P(A \mid B) = P(A \cap B)/P(B) = P(A)*P(B)/P(B) = P(A)$ \hfill \\
+
+\hfill \\
+\textbf{Mutually exclusive}: Two events A and B are said to be mutually exclusive if $P(A \cap B) = 0$ {\tiny (pg 22)} and $P(A \cup B) = P(A) + P(B)$  {\tiny (E confirmed.)}
+\textbf{Disjoint}: mutually exclusive sets. \hfill \\
+$P(A \cup B) = P(A) + P(B) - P(A \cap B) = P(A) + P(B) $ \hfill \\
+$P(A \mid B) = P(A \cap B)/P(B) = 0/B = 0 $ \hfill \\
+If you assume mutual exclusivity when it isn't true, you get too high of a number for $P(A \cup B)$.  Vizualize the Venn diagram for that: need to have $A \cap B = \emptyset$ \hfill \\
+If you are adding probabilities, they must be for mutually exclusive events. \hfill \\
+
+\hfill \\
+\textbf{Independence of More than Two events}:
+Events $A_1, A_2, \dots  A_n$ are said to be \textit{independent} if for every set of indices $i_1, i_2, \dots, i_n$ between 1 and $n$, inclusive,  {\tiny pg 59, Sect 2.5, Lec6}
+	\[ P(A_{i1} \cap A_{i2} \cap \dots \cap A_{ik}) = P(A_{i1})*P(A_{i2}) \dots P(A_{ik}) \]
+Note that the k is different than the n.  You have to get the doubles and the triples, etc. 
+For the sets A, B, C, D, you have 11: $(A, B), (A, C), (A, D), (B, C), (B, D), (C, D),$ \\
+$(A, B, C), (B, C, D), (A, C, D), (A, B, D), (A, B, C, D)$ \hfill \\
+
+\hfill \\
+
+If you only know single probabilities, how do you decompose $P((A_1 \cap A_2) \cup (A_3 \cap B_4))$?  You can't break apart the cups {\tiny that requires mutual exclusivity}, so convert it to $P(A_1 \cap A_2) + P(A_3 \cap A_4) + P((A_1 \cap A_2) \cap (A_3 \cap A_4))$ \hfill \\
+
+Trickier: how do you simplify $P(A_2 \cup A_3) \cap A_4 $ if you only know $A_2$, $A_3$, and $A_4$ are independent?  Factor out the $P(A_4)$ and do the same thing. $[P(A_2) + P(A_3) - P(A_2 \cap A_3)]*P(A_4)$
 
 %%%%%%%%%%%%
 \section{Combinatorics}
+\smallskip \hrule height 2pt \smallskip
 
 \subsection{Multiplication Rule} for counting ordered sequences
-If A can be performed in $m$ different ways and operation B in $n$ different ways, the sequence (operation A, operation B) can be performed in $m*n$ different ways. 
+If A can be performed in $m$ different ways and operation B in $n$ different ways, the sequence (operation A, operation B) can be performed in $m*n$ different ways. {\tiny pg 68}
 
 \subsection{Permutations} for when all objects are distinct.
-The number of permutations of length $k$ that can be formed from a set of $n$ distinct elements, repetitions NOT allowed, is denoted by the symbol ${_n}P_k$ where ${_n}P_k = n(n-1)(n-2) \dots (n - k - 1) = \frac{n!}{(n-k)!}$ 
+The number of permutations of length $k$ that can be formed from a set of $n$ distinct elements, repetitions NOT allowed, is denoted by the symbol ${_n}P_k$ where ${_n}P_k = n(n-1)(n-2) \dots (n - k - 1) = \frac{n!}{(n-k)!}$  {\tiny (pg 74) }\hfill \\
+\[  {_n}P_k = \frac{n!}{(n-k)!} \]
 
-Corollary: the number of ways to permute an entire set of n distinct objects in ${_n}P_n = n!$ 
+Corollary: the number of ways to permute an entire set of n distinct objects in ${_n}P_n = n!$    {\tiny (pg 74) }\
 
 When all objects are NOT distinct.  The number of ways to arrange $n$ objects, $n_1$ being of one kind, $n_2$ of a second kind, $\dots$, and $n_r$ of an $r^{th}$ kind is 
-\[ \frac{n!}{n{_1}!n{_2} \dots !n{_r!}} \]
+\[ \mbox{not distinct: } \frac{n!}{n{_1}!n{_2} \dots !n{_r!}} \]
+Note: ratios like this are called \textit{multinomial coefficients} because the general term in the expansion of $(x_1 + x_2 + \dots + x_n$ is $\frac{n!}{n_1!n_2!\dots n_r!}x_1^{n1}x_2^{n2} \dots x_r^{nr}$  {\tiny (pg 81) }\hfill \\
+\hfill \\
+\textbf{Sterling's formula} for evaluating big factorials {\tiny (pg 77)}: $log_{10}(n!) = log_{10}(\sqrt{2*\pi}) + (n + \frac{1}{2})*log_{10}(n) - n*log_{10}(e)$ \hfill \\
+\hfill \\
 
 \subsection{Combinations}
-The number of ways to form combinations of size $k$ from a set of $n$ distinct objects, repetitions not allowed, is denoted by the symbols XXX or ${_n}C_k$, where 
-	\[ XXX = {_n}C_k = \frac{n!}{(n-k)!} \]
+\textbf{(Order doesn't matter.)} The number of ways to form combinations of size $k$ from a set of $n$ \textbf{distinct} objects, repetitions not allowed, is denoted by the symbols $\binom{n}{k}$ or ${_n}C_k$, where   {\tiny (pg 86)}
+	\[ {n \choose k} = {_n}C_k = \frac{n!}{k!(n-k)!} \]
+(Leaving $(n-k)$ items out of the selection.  Order doesn't matter so reduce the number of sets by $k!$) \hfill \\
+\hfill \\
+What about when objects are \textbf{not} distinct but you still want combinations? \hfill \\
+\hfill \\
+\textbf{Differentiating permutations from permutations with repeats from combinations}:
+For the set $(0, 1, 2, 2)$, the number of permutations of length two are ${_n}P_k = \frac{2!}{(4-1)!}$.
+The number of permutations if they are not distinct...??
+The number of combinations: 
+	
 
   
 
