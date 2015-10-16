@@ -175,7 +175,8 @@ $P(\mbox{have antigen A} \mid \mbox{have antigen B}) = P(AB)/(P(B) + P(AB)) $
 %%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Independent and disjoint are not equivalent}
-The definition of independence is $P(A \cap B) = P(A)*P(B)$.  The definition of mutually exclusive is $P(A \cap B) = 0$.   If $A$ and $B$ have nonzero probability then these can't both be true.  
+The definition of independence is $P(A \cap B) = P(A)*P(B)$.  The definition of mutually exclusive is $P(A \cap B) = 0$.   If $A$ and $B$ have nonzero probability then these can't both be true.  \hfill \\
+\hfill \\
 
 \textbf{Independent}: Two events A and B are said to be independent if $P(A \cap B) = P(A)*P(B)$ {\tiny (pg 53)} Note that if $A$ and $B$ are independent, $A^c$ and $B^c$ are independent. {\tiny pg54 ex 2.5.2.}  I don't believe you can visualize independence in a Venn diagram. \hfill \\ 
 $P(A \cup B) = P(A) + P(B) - P(A \cap B) = P(A) + P(B) - P(A)*P(B)$ \hfill \\
@@ -226,10 +227,18 @@ Note: ratios like this are called \textit{multinomial coefficients} because the 
 \subsection{Combinations}
 \textbf{(Order doesn't matter.)} The number of ways to form combinations of size $k$ from a set of $n$ \textbf{distinct} objects, repetitions not allowed, is denoted by the symbols $\binom{n}{k}$ or ${_n}C_k$, where   {\tiny (pg 86)}
 	\[ {n \choose k} = {_n}C_k = \frac{n!}{k!(n-k)!} \]
+This is the number of permutations ($\frac{n!}{(n-k)!}$) divided by the number of ways to order those k selections (so divide by $k$).
 (Leaving $(n-k)$ items out of the selection.  Order doesn't matter so reduce the number of sets by $k!$) \hfill \\
+
+Classic example:  How many unique hand shakes in a room of 8 people?  ${_8}C_2$ applies \hfill \\
+\hfill \\
 \hfill \\
 What about when objects are \textbf{not} distinct but you still want combinations? \hfill \\
 \hfill \\
+
+\textbf{Combinations/permutations on tests}: First decide whether the objects are distinguishable.  If they are distinguishable try to think of it as a permutation problem.  If not, try to think of it as a combination problem.  E.g. ways to order 4 blue chips and 4 red chips.  \hfill \\
+\hfill \\
+
 \textbf{Differentiating permutations from permutations with repeats from combinations}:
 For the set $(0, 1, 2, 2)$, the number of permutations of length two are ${_n}P_k = \frac{2!}{(4-1)!}$.
 The number of permutations if they are not distinct...??

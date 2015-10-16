@@ -1,0 +1,25 @@
+\section{Binomial and Hypergeometric}\smallskip \hrule height 2pt \smallskip
+Note: this is for objects that are indistinguishable.  You can distinguish a red fish from a blue fish but you can't tell whether a red fish's name is "Mary" or "Gary". 
+\hfill \\
+	\begin{description}
+		\item[Binomial Distribution] A series of \textbf{independent trials}, each resulting in one of \textbf{two} possible outcomes, "success", or "failure".  So yes replacement if it keeps trials independent, and can't have three possible outcomes. 
+			\[ P(k \mbox \ successes) = {{n}\choose{k}}p^k(1-p)^k \mbox{, for \ } k = 0, 1, \dots, n \]
+		Note this is the number of ways of getting k indistinguishable objects in n tries.  Then you multiply by the probability, $p^k$, of getting that number k, and the probability $(1-p)^k$ of getting the rest.  $P(\mbox{2 heads out of three for a coin that gives heads 3/4 of the time}) = (3)*(0.75^2)*(0.25^1)$ \hfill \\
+		\hfill \\
+		\item[Hypergeometric Distribution]  For \textbf{no replacement}.  Draw $n$ chips from an urn that has $r$ red chips, $w$ white chips, and $r + w = N$.   $n$ is the total number of chips you will draw; $k/n$ will be the fraction you draw that are red. Draw chips without replacement.  Note k must be < r or the problem doesn't make sense and something like ${{r} \choose {k}} = {{1} \choose {5}} = ?!?!$ can happen.  
+			\[ P(\mbox{k red chips chosen}) = \frac{ {{r} \choose {k}} {{w} \choose {n-k}} }{{{N}\choose{k}}} \] % \frac{{{r}\choose{k}}{w \chose {n-k}}}{N \chose k} \]
+			\[ \frac{\mbox{(ways to draw \ k red from r)}*\mbox{(ways to draw n-k non-red from r)}}{\mbox{total number of combinations of chips you can draw}} \] \hfill \\
+		Note: this is the same as	{\tiny pg 111}
+		\[ = \frac{ {{n} \choose {k}} ({{_r}P_{k}}) ({{_w}P_{n-k}}) }{{{_N}P_n}} \] 
+			\hfill \\
+		Note that if you sample a very small fraction of the fish pond you will recover the binomial distribution (because replacement vs. no replacement isn't so important). \hfill \\
+		\hfill \\
+		Say you have $1, 2, 3, \dots, t$ types of objects with numbers $n_1, n_2, \dots, n_t$ in an urn.
+		If you want to chose $k_1$ objects of  type 1, $k_2$ objects of  type 2, $\dots$ $k_t$ objects of  type $t$.\
+		Then the number of objects is $N = n_1 + n_2 + \dots + n_t$, the number you are selecting is $n = k_1+ k_2 + \dots + k_t$, and  the formula is   {\tiny q 3.2.35, pg 118}
+		\[  \frac{ {{n_1}\choose{k_1}} {{n_2}\choose{k_2}} \dots {{n_t}\choose{k_t}} }{ {{N}\choose{n}} }  \]
+		This is different than the formula I derived.  I was multiplying the probabilities separately, and updating N each time.  Is this an overestimation? 
+		
+		
+	\end{description}
+	
