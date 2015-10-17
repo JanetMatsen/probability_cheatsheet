@@ -1,11 +1,18 @@
 \section{Binomial and Hypergeometric}\smallskip \hrule height 2pt \smallskip
 Note: this is for objects that are indistinguishable.  You can distinguish a red fish from a blue fish but you can't tell whether a red fish's name is "Mary" or "Gary". 
 \hfill \\
+
+\subsection{Binomial distribution/"probability"}
 	\begin{description}
-		\item[Binomial Distribution] A series of \textbf{independent trials}, each resulting in one of \textbf{two} possible outcomes, "success", or "failure".  So yes replacement if it keeps trials independent, and can't have three possible outcomes. 
+		
+		\item[Binomial Distribution] ("Probability" in 10/12 lecture). A series of \textbf{independent trials}, each resulting in one of \textbf{two} possible outcomes, "success", or "failure".  So yes replacement if it keeps trials independent, and can't have three possible outcomes. 
 			\[ P(k \mbox \ successes) = {{n}\choose{k}}p^k(1-p)^k \mbox{, for \ } k = 0, 1, \dots, n \]
 		Note this is the number of ways of getting k indistinguishable objects in n tries.  Then you multiply by the probability, $p^k$, of getting that number k, and the probability $(1-p)^k$ of getting the rest.  $P(\mbox{2 heads out of three for a coin that gives heads 3/4 of the time}) = (3)*(0.75^2)*(0.25^1)$ \hfill \\
 		\hfill \\
+	\end{description}
+
+\subsection{Hypergeometric Distribution}
+	\begin{description}
 		\item[Hypergeometric Distribution]  For \textbf{no replacement}.  Draw $n$ chips from an urn that has $r$ red chips, $w$ white chips, and $r + w = N$.   $n$ is the total number of chips you will draw; $k/n$ will be the fraction you draw that are red. Draw chips without replacement.  Note k must be < r or the problem doesn't make sense and something like ${{r} \choose {k}} = {{1} \choose {5}} = ?!?!$ can happen.  
 			\[ P(\mbox{k red chips chosen}) = \frac{ {{r} \choose {k}} {{w} \choose {n-k}} }{{{N}\choose{k}}} \] % \frac{{{r}\choose{k}}{w \chose {n-k}}}{N \chose k} \]
 			\[ \frac{\mbox{(ways to draw \ k red from r)}*\mbox{(ways to draw n-k non-red from r)}}{\mbox{total number of combinations of chips you can draw}} \] \hfill \\
@@ -18,8 +25,77 @@ Note: this is for objects that are indistinguishable.  You can distinguish a red
 		If you want to chose $k_1$ objects of  type 1, $k_2$ objects of  type 2, $\dots$ $k_t$ objects of  type $t$.\
 		Then the number of objects is $N = n_1 + n_2 + \dots + n_t$, the number you are selecting is $n = k_1+ k_2 + \dots + k_t$, and  the formula is   {\tiny q 3.2.35, pg 118}
 		\[  \frac{ {{n_1}\choose{k_1}} {{n_2}\choose{k_2}} \dots {{n_t}\choose{k_t}} }{ {{N}\choose{n}} }  \]
-		This is different than the formula I derived.  I was multiplying the probabilities separately, and updating N each time.  Is this an overestimation? 
-		
-		
+		This is different than the formula I derived.  I was multiplying the probabilities separately, and updating N each time.  Is this an overestimation? 		
 	\end{description}
 	
+\section{Random Variables} 
+\subsection{Discrete probability function}
+Suppose S is a finite or countably infinite sample space.  Let $p$ be a real-valued function defined for each element of $S$ such that: {\tiny pg 119} \hfill \\
+(a)  \[ 0 < p(s) \mbox{ for each \ } s \in S  \] 
+(b)  \[  \sum\limits_{s \in S} p(s) = 1 \]
+Then $p$ is said to be a \textit{discrete probability function} \hfill \\
+\hfill \\
+Once $p(s)$ is defined for all $s$, then you can say the probability of any event $A$ is the sum of the probabilities of the outcomes comprising $A$: 
+\[  P(A) = \sum\limits_{s \in S} p(s) \]
+This function satisfies the probability axioms of Section 2.3.   \hfill \\
+
+Note: you can still have an infinite number of outcomes in the sample space, as long as the probability of all outcomes sums to one.  E.g. probability of getting heads on an odd numbered coin toss has an infinite number of events but if you sum the two sums (got it on odd, got it on even), you get a sum of 1.  {\tiny pg 120}
+
+\subsection{Discrete random variable}
+3 Lecture Axioms: {\tiny 10/14}:   $\Omega \rightarrow {\cal X} \subseteq $ R   \hfill \\  
+(The sample space is ${\cal X}$, which is real.)  Pg 119 has a similar set of facts, that are presented a little differently. 
+ \hfill \\  
+	\[  P(X=x) \geq 0 \mbox{, \ \  }  P(X=x) > 0  \mbox{ if } x \in {\cal X}  \]
+%(book version (pg 119)): $ 0 \leq p(s)$ for each $s \in S$. ($S$ is a finite or countably infinite sample space. P is a real -valued function defined over eac element of S) 
+	\[  P(\Omega) = 1 \mbox{, so \ }  \sum\limits_{x \in \cal X} P(x= {\cal X}) = 1\]
+$E_1$, $E_2$, $\dots$, $E_k$ are disjoint (non-overlapping). 
+	\[ P(E_1 \cup E_2 \cup \dots \cup E_k) =  \sum\limits_{i=1} P(E_i) \mbox{;} P(x \in B) = \sum\limits_{{\cal X} \in B} P(x = {\cal X}) \]
+We have done this.  E.g. P(X is 2, 3, or 4) $= P(X=2)$ + $P(X=3)$ + $P(X=4)$
+	%\[  E_1, E_2, \dots, E_k \mbox{ are disjoint (non-ovaerlapping).} P(E_1 \cup E_2 \cup \dots \cup E_k) =  \sum\limits_{i=1} P(E_i) \]
+	%\[  P(\Omega) = 1, so  \sum\limits_{i=1}^k P(E_i)  \mbox{ if } x \in {\cal X} \]
+	
+     \hfill \\  
+  \hfill \\  
+A function whose domain is a sample space $S$ and whose values form a finite or countably infinite set of real numbers is called a \textbf{discrete random variable}.  We denote random variables by uppercase letters, often X or Y.  {\tiny page 123}  \hfill \\
+Example: sum of the values of two die faces.  E.g. value of die 1 is $X_1$, value of die 2 is $X_2$, value of sum is $X = X_1 + X_2$    \hfill \\  
+  \hfill \\  
+  
+\textbf{The Probability Density Function}.  Associated with every discrete random variable X is a \textit{probability density function} (or \textit{pdf}), denoted $p_x(k)$ where 
+	\[  p_X(k) = P({s \in S \mid X(s) = k})  \]
+That's often written as $ p_X(k) = P(X = k) $.  \hfill \\  
+Note: the binomial distribution is such an example:   (So is hypergeometric.) 
+	\[  p_x(k) = P(k \mbox \ successes) = {{n}\choose{k}}p^k(1-p)^k \mbox{, for \ } k = 0, 1, \dots, n \]
+
+\subsection{Cumulative Distribution Function} \textbf{(Discrete)}
+You might want $P(x \leq X \leq t) = P(X \leq t) - P(X \leq s - 1)$  {\tiny pg 127}  \hfill \\  
+\textbf{Cumulative distribution function}:  Let $X$ be a discrete random variable.  For any real number $t$, the probability that $X$ takes on a value $\leq t$ is the \textit{cumulative distribution} (cdf) of $X$ [written $F_X(t)$].
+	\[ F_X(t) = P({s \ in S \mid X(s) \leq t}) \]
+or more simply 
+	\[  F_X(t) = P(X \leq t)  \]
+	
+\subsection{Continuous random variables}
+A probability function $P$ on a set of real numbers $S$ is called \textbf{continuous} if there exists a function $f(t)$ such that for any closed interval $[a, b] \subset S$, $P([a, b]) = \int_{a}^{b} f(t)dt$. \hfill \\  
+Kind of obvious, but all values of the function must be more than zero.  \hfill \\  
+
+\subsection{Continuous probability density functions}
+{\tiny (pg 135)} Let $Y$ be a function from a sample space $S$ to the real-numbers (takes values of real numbers; put in something and you get out a real number).  The function $Y$ is called a \textit{continuous random variable} if there exists a function $f_Y(y)$ such that for any real numbers $a$ and $b$ with $a < b$:
+	\[  P(a \leq Y \leq b) = \int_{a}^{b} f_Y(y)dy \]
+The function $f_Y(y)$ is the \textit{probability density function (pdf)} for $Y$.  
+
+\subsection{Continuous cumulative distribution functions}
+As in the discrete case, the \textit{cumulative distribution function (cdf)} is defined by $F_Y(y) = P(Y \leq y)$: {\tiny (pg 136)}
+	\[  F_Y(y) = P(Y \leq y) = \int_{- \inf}^{y} f_Y(t)dt \]
+Also written as  {\tiny (Definition 3.4.3: pg 137)}
+	\[  F_Y(y) = \int_{- \inf}^{y} f_Y(r)dr = P({s \in S \mid Y(s) \leq y}) = P(Y < y) \]
+The cdf in this case is an integral of $f_Y(y)$.  Note that now we have $f_Y(t)$ or $f_Y(r)$, not $f_Y(y)$.  We are still integrating over the x-axis ($y$) but we can't have $y$ in $dy$ and in the integration limits.   \hfill \\  
+Also note the derivative of the cdf is the pdf:
+	\[  \frac{d}{dy}F_Y(y) = f_Y(y) \]
+	
+\subsection{Expected Values}
+
+
+
+
+
+
+
