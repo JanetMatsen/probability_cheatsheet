@@ -92,10 +92,84 @@ Also note the derivative of the cdf is the pdf:
 	\[  \frac{d}{dy}F_Y(y) = f_Y(y) \]
 	
 \subsection{Expected Values}
+Let $X$ be a discrete random variable with probability function $p_X(k)$.  The \textit{expected value} of $X$ is denoted E(X) (or sometimes $\mu$ or $\mu x$ and is given by: {\tiny pg 140}   \hfill \\  
+\textbf{Discrete:}
+	\[  E(X) = \mu = \mu x = \sum\limits_{\mbox{all } k} k*p_X(k)  \]
+\textbf{Random:}	  \hfill \\  
+	\[  E(Y) = \mu = \mu y = \int_{- \inf}^{\inf} y*f(y)dy  \]
+\textbf{binomial:} {\tiny pg 141, ~10/16 TA lecture} 	  \hfill \\
+	\[ E(X) = np =  \sum\limits_{k=0}^{n} k \cdot p_X(k) = \sum\limits_{k=0}^{n}k \cdot {{n}\choose{k}}p^k(1-p)^k \]  
+\textbf{hypergeometric}: for selecting $n$ balls from $r$ red balls and $w$ white balls{\tiny pg 143, ~10/16 TA lecture}  \hfill \\  
+	\[ E(X) = \frac{rn}{r+w} \]
+turns out the same if you substitute the proportion of red balls:
+	\[ E(X) = n \cdot p \mbox{ for } p= \frac{r}{r+w} \]
+\hfill \\  	
 
+\subsection{The median}
+If $X$ is a discrete random variable, the median, $m$, is that point for which $P(X < m) = P(X>m)$.  In the event that $P(X \leq m) = 0.5$ and $P(X \geq m')$, the median is defined to be the arithmetic average, $(m + m')/2$.  \hfill \\
+If $Y$ is a continuous random variable, its median is the solution to the integral equation $\int_{- \inf}^{m} f(y)dy = 0.5$  \hfill \\
+If a random variable's pdf is symmetric, both $\mu$ and $m$ will be equal.  
 
+\subsection{Expected values for functions of random variables}
+{\tiny (pg 150; Lecture 10/14)}  Suppose $X$ is a discrete random variable with pdf $p_X(k)$.  Let $g(X)$ be a function of $X$.  Then the expected value of the random variable $g(X)$ is given by: \hfill \\
+	\[ E[g(X)] = \sum\limits_{\mbox{all k}} g(k) \cdot p_X(k) \]
+Provided that $\sum\limits_{\mbox{all k}} | g(k)| \cdot p_X(k) < \inf$
+\hfill \\
+\hfill \\
+If $Y$ is a discrete random variable with pdf $f_Y(y)$, and if $g(Y)$ is a continuous function, then the expected value of the random variable $g(Y)$ is: \hfill \\
+	\[ E[g(Y)] = \sum\limits_{- \inf}^{\inf} g(y) \cdot f_Y(y)dy \]
+Provided that $E[g(Y)] = \sum\limits_{\inf}^{\inf} | g(y)| \cdot f_Y(y)dy < \inf$  \hfill \\
+\hfill \\
+These two definitions highlight the difference in nomenclature. 
 
+\begin{center}
+\begin{tabular}{ c c c c }
+ \textbf{Random Var} & \textbf{x-axis} & \textbf{pdf}  & \textbf{pdf alternative} \\ 
+ $X$ & $k$ & $p_X(k)$ & $p(X=k) $ \\  
+ $Y$ & $y$ & $f_Y(y)$    
+\end{tabular}
+\end{center}
+\hfill \\
 
-
+\hfill \\
+Say your random variable is the number on a die face.  Say your function of that random variable is the square of that number.  If you want the expectation of the square, you can sum the products of the squares with the probabilities of the random variable values.  \hfill \\
+\hfill \\
+\textbf{Theorem} {\tiny (10/14 Lecture \& similar on pg 150)}:  \hfill \\
+let $Y = g(X)$.  Since:
+	\begin{align*}
+		\mathbb{E} (Y) &=  \sum\limits_{y} yP(Y=y)   \\
+			& = \sum\limits_{y} y \sum\limits_{x:g(x)=y} P(X = {\cal X})  \\
+			& \mbox{note: above is a sum over the $y$ values,} \\ 
+			& \mbox{and a sum over the $x$s that can give those y values.} \\
+			& \mbox{There can be multiple $x$s that give a particular $y$.} \\
+			& = \sum\limits_{y} \sum\limits_{x:g(x)=y} g(x)P(X=x) \\
+			& \mbox{Drop $y$ sum b/c now everything is in terms of $x$} \\
+			& \mbox{You are summing over all the events in a set that }   \\
+			& \mbox{are indexed by y.  But when you take the sum over y, }  \\
+			& \mbox{you say let's sum over all the different outcomes. } \\
+			& = \sum\limits_{x \in {\cal X}} g(x)P(X=x) = \sum\limits_{x \in {\cal X}} g(x)P({\cal X}) \\ 
+			& \mbox{This is a sum over all the $x$s in the whole set of outcomes (${\cal X}$)} 
+	\end{align*} 
+Loop over all the values the random variable takes (all $x$s in ${\cal X}$), and sum (probability of that $x$)*(the function applied to that $x$).  \hfill \\
+ \hfill \\
+ 
+\textbf{Addition of functions of random variables} 
+{ \tiny (10/14 lecture)}
+	\begin{align*}
+		\mathbb{E} (g_1(x) + g_2(x)) &=   \sum\limits_{x \in {\cal X}} (g_1(x) + g_2(x))p(x) \\
+			&= \sum\limits_{x \in {\cal X}} g_1(x)p(x) + \sum\limits_{x \in {\cal X}} g_2(x)p(x) \\
+			&=\mathbb{E}  (g_1(x)) + \mathbb{E} (g_2(x)) \\
+	\end{align*} 
+Example $\mathbb{E}  (a(x) + b)$:
+	\begin{align*}
+		\mathbb{E} (a(x) + b) &=  \mathbb{E}  (a(x)) + \mathbb{E} (b) \\
+			& = a\mathbb{E} (x) + b
+	\end{align*} 
+Example $\mathbb{E}  (x(x-1))$:
+	\begin{align*}
+		\mathbb{E} (x(x-1)) &= \mathbb{E} (x^1 - x)) \\
+			& =  \mathbb{E}  (x^2) - \mathbb{E} (x)    \\
+			& \mbox{this might be easier to evaluate}
+	\end{align*} 
 
 
