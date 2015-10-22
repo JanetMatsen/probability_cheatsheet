@@ -92,7 +92,16 @@ For events E, F of a partition, you can build F or P(F) from the overlaps of the
 	\[ F = U_i(F \cap E_i)  \]
 	\[ P(F) = \sum_{n=1} P(F \cap E_i) \]
 Special case: If $E_i$ is the \textit{i}th outcome in a countable $\Omega$, $F \cap E_i = Ei$ 
-or $F \cap E_i = \Phi$ and $P(F) = \sum_{i \in F} P(E_i)$. 
+or $F \cap E_i = \Phi$ and $P(F) = \sum_{i \in F} P(E_i)$.  \hfill \\
+\hfill \\
+Example {\tiny my 1st stat lecture}:  P(3 face cards in a row).  Note: 40 of the 52 cards in a deck are non-face cards.  Let $C_i$ = the event corresponding to drawing a non-face card on draw $i$.  Then 
+	\begin{align*}
+		P(C_1 \cap C_2 \cap C_3) &= P(C1)  \cdot P(C_2 \mid C_1) \cdot P(C_3 \mid C_2 \cap C_1) \\
+			&= (40/52) \cdot (39/51) \cdot (38/50) 
+	\end{align*} 
+	\hfill \\
+  \hfill \\
+
 
 \item[The inclusion and exclusion formula] (The overlapping tiles sum)
 If you want to get the $\cup$ of some events, sum all the areas, subtract out the singly over lapping bits, add back the tripply overlapping bits, subtract off the quadruply overlapping bits, etc.  Go as far as the number of Es you have. 
@@ -166,7 +175,37 @@ We are summing across outcomes, and weighting the sums by the likelyhood of the 
  	\begin{align*}
 		P(H_j \mid D) = \frac{P(H_j \cap D)}{P(D)} = \frac{P(D \mid H_j) P(H_j) }{\sum_{i=1}^k P(D \mid H_j) P(H_j) }
 	\end{align*}
-$P(\mbox{have antigen A} \mid \mbox{have antigen B}) = P(AB)/(P(B) + P(AB)) $
+$P(\mbox{have antigen A} \mid \mbox{have antigen B}) = P(AB)/(P(B) + P(AB)) $  \hfill \\
+ \hfill \\
+ 
+ Example {\tiny (J's Lecture 1)}.  Coin $C_1$ has probability $1/4$ of giving heads.  Coin $C_2$ has probability $1/2$ of giving heads.  What is $P(C_1 \mid H)$?  Bayes theorem.   
+ 	\begin{align*}
+	P(C_1 \mid H) &= P(C_1 \cap H)/P(H) \\
+		&\mbox{use } P(C_1 \cap H) = P(H \mid C_1) \cdot P(C_1) \\
+		&\mbox{use } P(H) = P(H \mid C_1) \cdot P(C_1) + P(H \mid C_2) \cdot P(C_2) \\
+			& = \frac{P(H \mid C_1) \cdot P(C_1)}{P(H \mid C_1) \cdot P(C_1) + P(H \mid C_2) \cdot P(C_2)} \\
+			&= \frac{(1/4)\cdot (1/2)}{(1/4)\cdot (1/2) + (3/4)\cdot (1/2) } = \frac{1}{4}\\
+	\end{align*}
+If you get heads again, what is your probability of coin 1? Call your $P(C_1)$ from above $P^*(C_1)$.  Now $P(H_2)$ (probability of a 2nd heads) is:
+	\begin{align*}
+	P(C_1 \mid H_2) &= P(C_1 \cap H_2)/P(H_2) \\
+		&\mbox{use } P(C_1 \cap H_2) = P(H_2 \mid C_1) \cdot P^*(C_1) \\
+		&\mbox{use } P(H_2) = P(H_2 \mid C_1) \cdot P^*(C_1) + P(H_2 \mid C_2) \cdot P^*(C_2) \\
+			& = \frac{P(H_2 \mid C_1) \cdot P^*(C_1)}{P(H_2 \mid C_1) \cdot P^*(C_1) + P(H_2 \mid C_2) \cdot P^*(C_2)} \\
+			&= \frac{(1/4)\cdot (1/4)}{(1/4)\cdot (1/4) + (3/4)\cdot (3/2) } = \frac{1}{10}\\
+	\end{align*}
+We could have done it without Bayes: Instead use $P(HH)$ which is P(two heads).  
+	\begin{align*}
+	P(C_1 \mid HH) &= P(C_1 \cap HH)/P(HH) \\
+		&\mbox{use } P(C_1 \cap HH) = P(HH \mid C_1) \cdot P(C_1) \\
+		&\mbox{use } P(HH) = P(HH \mid C_1) \cdot P(C_1) + P(HH \mid C_2) \cdot P(C_2) \\
+		&\mbox{use } P(HH \mid C_1) = P(H_2 \cap H_1 \mid C_1) \\
+			& = \frac{P(HH \mid C_1) \cdot P(C_1)}{P(HH \mid C_1) \cdot P(C_1) + P(HH \mid C_2) \cdot P(C_2)} \\
+		&\mbox{use Conditional Independence: } P(H_2 \cap H_1 \mid C_1) = \frac{1}{4} \cdot \frac{1}{4} \\
+		&\mbox{use Conditional Independence: } P(H_2 \cap H_1 \mid C_2) = \frac{3}{4} \cdot \frac{3}{4} \\
+			&= \frac{(1/4)^2\cdot (1/2)}{(1/4)^2\cdot (1/2) + (3/4)^2\cdot (1/2) } = \frac{1}{10}\\
+	\end{align*}
+
 	
 %	\begin{align*)
 %		$A \cap B$
@@ -175,12 +214,12 @@ $P(\mbox{have antigen A} \mid \mbox{have antigen B}) = P(AB)/(P(B) + P(AB)) $
 %%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Independent and disjoint are not equivalent}
-The definition of independence is $P(A \cap B) = P(A)*P(B)$.  The definition of mutually exclusive is $P(A \cap B) = 0$.   If $A$ and $B$ have nonzero probability then these can't both be true.  \hfill \\
+The definition of independence is $P(A \cap B) = P(A) \cdot P(B)$.  The definition of mutually exclusive is $P(A \cap B) = 0$.   If $A$ and $B$ have nonzero probability then these can't both be true.  \hfill \\
 \hfill \\
 
-\textbf{Independent}: Two events A and B are said to be independent if $P(A \cap B) = P(A)*P(B)$ {\tiny (pg 53)} Note that if $A$ and $B$ are independent, $A^c$ and $B^c$ are independent. {\tiny pg54 ex 2.5.2.}  I don't believe you can visualize independence in a Venn diagram. \hfill \\ 
-$P(A \cup B) = P(A) + P(B) - P(A \cap B) = P(A) + P(B) - P(A)*P(B)$ \hfill \\
-$P(A \mid B) = P(A \cap B)/P(B) = P(A)*P(B)/P(B) = P(A)$ \hfill \\
+\textbf{Independent}: Two events A and B are said to be independent if $P(A \cap B) = P(A) \cdot P(B)$ {\tiny (pg 53)} Note that if $A$ and $B$ are independent, $A^c$ and $B^c$ are independent. {\tiny pg54 ex 2.5.2.}  I don't believe you can visualize independence in a Venn diagram. \hfill \\ 
+$P(A \cup B) = P(A) + P(B) - P(A \cap B) = P(A) + P(B) - P(A) \cdot P(B)$ \hfill \\
+$P(A \mid B) = P(A \cap B)/P(B) = P(A) \cdot P(B)/P(B) = P(A)$ \hfill \\
 
 \hfill \\
 \textbf{Mutually exclusive}: Two events A and B are said to be mutually exclusive if $P(A \cap B) = 0$ {\tiny (pg 22)} and $P(A \cup B) = P(A) + P(B)$  {\tiny (E confirmed.)}
@@ -193,7 +232,7 @@ If you are adding probabilities, they must be for mutually exclusive events. \hf
 \hfill \\
 \textbf{Independence of More than Two events}:
 Events $A_1, A_2, \dots  A_n$ are said to be \textit{independent} if for every set of indices $i_1, i_2, \dots, i_n$ between 1 and $n$, inclusive,  {\tiny pg 59, Sect 2.5, Lec6}
-	\[ P(A_{i1} \cap A_{i2} \cap \dots \cap A_{ik}) = P(A_{i1})*P(A_{i2}) \dots P(A_{ik}) \]
+	\[ P(A_{i1} \cap A_{i2} \cap \dots \cap A_{ik}) = P(A_{i1}) \cdot P(A_{i2}) \dots P(A_{ik}) \]
 Note that the k is different than the n.  You have to get the doubles and the triples, etc. 
 For the sets A, B, C, D, you have 11: $(A, B), (A, C), (A, D), (B, C), (B, D), (C, D),$ \\
 $(A, B, C), (B, C, D), (A, C, D), (A, B, D), (A, B, C, D)$ \hfill \\
@@ -202,7 +241,11 @@ $(A, B, C), (B, C, D), (A, C, D), (A, B, D), (A, B, C, D)$ \hfill \\
 
 If you only know single probabilities, how do you decompose $P((A_1 \cap A_2) \cup (A_3 \cap B_4))$?  You can't break apart the cups {\tiny that requires mutual exclusivity}, so convert it to $P(A_1 \cap A_2) + P(A_3 \cap A_4) + P((A_1 \cap A_2) \cap (A_3 \cap A_4))$ \hfill \\
 
-Trickier: how do you simplify $P(A_2 \cup A_3) \cap A_4 $ if you only know $A_2$, $A_3$, and $A_4$ are independent?  Factor out the $P(A_4)$ and do the same thing. $[P(A_2) + P(A_3) - P(A_2 \cap A_3)]*P(A_4)$
+Trickier: how do you simplify $P(A_2 \cup A_3) \cap A_4 $ if you only know $A_2$, $A_3$, and $A_4$ are independent?  Factor out the $P(A_4)$ and do the same thing. $[P(A_2) + P(A_3) - P(A_2 \cap A_3)]*P(A_4)$\hfill \\
+\hfill \\
+
+\textbf{Conditional Independence}  ${A}$ and ${B}$ are conditionally independent given ${C}$ if $P({A}\cap {B}|{C}) = P({A}|{C})P({B}|{C})$.  E.g. the Bayes coin flip example where you can say $P(\mbox{Heads 1} \cap \mbox{Heads 2} \mid \mbox{Coin 1}) = P(\mbox{Heads 1}|Coin_1) \cdot P(\mbox{Heads 1}|Coin_1) = 2 \cdot P(\mbox{Heads}|Coin_1)$ Conditional independence does not imply independence, and independence does not imply conditional independence.
+
 
 %%%%%%%%%%%%
 \section{Combinatorics}
@@ -221,7 +264,7 @@ When all objects are NOT distinct.  The number of ways to arrange $n$ objects, $
 \[ \mbox{not distinct: } \frac{n!}{n{_1}!n{_2} \dots !n{_r!}} \]
 Note: ratios like this are called \textit{multinomial coefficients} because the general term in the expansion of $(x_1 + x_2 + \dots + x_n$ is $\frac{n!}{n_1!n_2!\dots n_r!}x_1^{n1}x_2^{n2} \dots x_r^{nr}$  {\tiny (pg 81) }\hfill \\
 \hfill \\
-\textbf{Sterling's formula} for evaluating big factorials {\tiny (pg 77)}: $log_{10}(n!) = log_{10}(\sqrt{2*\pi}) + (n + \frac{1}{2})*log_{10}(n) - n*log_{10}(e)$ \hfill \\
+\textbf{Sterling's formula} for evaluating big factorials {\tiny (pg 77)}: $log_{10}(n!) = log_{10}(\sqrt{2*\pi}) + (n + \frac{1}{2}) \cdot log_{10}(n) - n*log_{10}(e)$ \hfill \\
 \hfill \\
 
 \subsection{Combinations}
