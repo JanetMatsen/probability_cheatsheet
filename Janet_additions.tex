@@ -94,14 +94,6 @@ For events E, F of a partition, you can build F or P(F) from the overlaps of the
 Special case: If $E_i$ is the \textit{i}th outcome in a countable $\Omega$, $F \cap E_i = Ei$ 
 or $F \cap E_i = \Phi$ and $P(F) = \sum_{i \in F} P(E_i)$.  \hfill \\
 \hfill \\
-Example {\tiny my 1st stat lecture}:  P(3 face cards in a row).  Note: 40 of the 52 cards in a deck are non-face cards.  Let $C_i$ = the event corresponding to drawing a non-face card on draw $i$.  Then 
-	\begin{align*}
-		P(C_1 \cap C_2 \cap C_3) &= P(C1)  \cdot P(C_2 \mid C_1) \cdot P(C_3 \mid C_2 \cap C_1) \\
-			&= (40/52) \cdot (39/51) \cdot (38/50) 
-	\end{align*} 
-	\hfill \\
-  \hfill \\
-
 
 \item[The inclusion and exclusion formula] (The overlapping tiles sum)
 If you want to get the $\cup$ of some events, sum all the areas, subtract out the singly over lapping bits, add back the tripply overlapping bits, subtract off the quadruply overlapping bits, etc.  Go as far as the number of Es you have. 
@@ -157,10 +149,15 @@ If you don't want to use intersections, you can use only conditional probabiliti
 If $P(E_1 \cap E_2 \cap \dots \cap E_n) > 0$, \hfill \\
 $P(E_1 \cap E_2 \cap \dots \cap E_n)$  \hfill \\ 
 $= P(E_1)P(E_2 \mid E1)P(E_3 \mid E1 \cap E2) \dots P(E_n \mid E_1 \cap E_2 \cap \dots \cap E_n)$.
- Note you could put $E_1, E_2, \dots$ in any order you want (commutative rule).  Also note that there is no cool rul for $P(A \cup B \cup C)$ \hfill \\ 
+ Note you could put $E_1, E_2, \dots$ in any order you want (commutative rule).  Also note that there is no cool rul for $P(A \cup B \cup C)$  \hfill \\ \hfill \\ 
+ 
+ E.g. $P(\mbox{3 face cards in a row}) = P(F_1 \cap F_2 \cap F_3) = P(F_1) \cdot P(F_2 \mid F_1) \cdot P(F_3 \mid F_1 \cap F_2) = \frac{12}{52} \cdot \frac{11}{51} \cdot \frac{10}{50}$
+ 
+Review: if you want to break apart unions, you think of the tiles overlapping and subtracting/adding sections intersections back.  If you want to break apart intersections, you can use the chain rule to break it into conditional probabilities.   \hfill \\
  \hfill \\
-Review: if you want to break apart unions, you think of the tiles overlapping and subtracting/adding sections intersections back.  If you want to break apart intersections, you can use the chain rule to break it into conditional probabilities.  
- \hfill \\
+ 
+ {\tiny Covered later:} If the events are independent then you can break them apart: $P(E_1 \cap E_2 \cap \dots \cap E_n) = P(E_1)\cdot P(E_2)\cdot \dots P(E_n)$.   \hfill \\
+ E.g. odds of getting three odd rolls in a row with a die:  $P(odd_1 \cap odd_2 \cap \dots \cap odd_3) = P(odd_1)\cdot P(odd_2)\cdot P(odd_3) = (1/2)^3$.
  
  \subsection{Law of total probability} {\tiny Lecture 5, L\&M pg 43}   \hfill \\
  If you have mutually exclusive and exhaustive events $H_i$, and $i = 1, \dots k$.  Mutually exclusive \& exhaustive means $\sum_{i=1}^k P(H_i) = 1$.  Note also $H_i \cap H_j = \Phi$, $P(H_i \cap H_j) = 0$  
@@ -220,6 +217,14 @@ The definition of independence is $P(A \cap B) = P(A) \cdot P(B)$.  The definiti
 \textbf{Independent}: Two events A and B are said to be independent if $P(A \cap B) = P(A) \cdot P(B)$ {\tiny (pg 53)} Note that if $A$ and $B$ are independent, $A^c$ and $B^c$ are independent. {\tiny pg54 ex 2.5.2.}  I don't believe you can visualize independence in a Venn diagram. \hfill \\ 
 $P(A \cup B) = P(A) + P(B) - P(A \cap B) = P(A) + P(B) - P(A) \cdot P(B)$ \hfill \\
 $P(A \mid B) = P(A \cap B)/P(B) = P(A) \cdot P(B)/P(B) = P(A)$ \hfill \\
+ \hfill \\ 
+ 
+ \textit{Example:} {\tiny (Friday 10/9 lecture)} Two coins: $C_1$ gives heads $1/4$ of the time and $C_2$ gives heads $3/4$ of the time.  You get one of the two coins randomly and toss it twice.  Are the two coin tosses independent?  \textit{Answer:} given the coin, they are independent.  Allows for $P(H_1 \cap H_2 | C_1) =  \left(\frac{1}{4}\right)^2$.    \hfill \\
+ \textit{Separate question: } without knowing what coin you have, $P(H_1 \cap H_2) = \frac{1}{2}  \cdot  \left(\frac{1}{4}\right)^2 + \frac{1}{2}  \cdot  \left(\frac{3}{4}\right)^2 = \frac{10}{32} =\frac{5}{16} $.   \hfill \\
+ But if you calculate the probabilities separately: $P(H_1) = \frac{1}{2}\cdot \frac{1}{4} + \frac{1}{2}\cdot \frac{3}{4} = \frac{1}{2} $.   \hfill \\
+ If $H_1$ and $H_2$ were independent, $P(H_1) = P(H_2)$ and $P(H_1 \cap H_2) = P(H_1) \cdot P(H_2)$.    \hfill \\
+ Since $P(H_1) \cdot P(H_2) = P(H_1)^2 = \frac{1}{4}$ and $P(H_1 \cap H_2) = 5/16$ we know  $P(H_1 \cap H_2) \neq P(H_1)\cdot P(H_2) $
+
 
 \hfill \\
 \textbf{Mutually exclusive}: Two events A and B are said to be mutually exclusive if $P(A \cap B) = 0$ {\tiny (pg 22)} and $P(A \cup B) = P(A) + P(B)$  {\tiny (E confirmed.)}
@@ -241,10 +246,10 @@ $(A, B, C), (B, C, D), (A, C, D), (A, B, D), (A, B, C, D)$ \hfill \\
 
 If you only know single probabilities, how do you decompose $P((A_1 \cap A_2) \cup (A_3 \cap B_4))$?  You can't break apart the cups {\tiny that requires mutual exclusivity}, so convert it to $P(A_1 \cap A_2) + P(A_3 \cap A_4) + P((A_1 \cap A_2) \cap (A_3 \cap A_4))$ \hfill \\
 
-Trickier: how do you simplify $P(A_2 \cup A_3) \cap A_4 $ if you only know $A_2$, $A_3$, and $A_4$ are independent?  Factor out the $P(A_4)$ and do the same thing. $[P(A_2) + P(A_3) - P(A_2 \cap A_3)]*P(A_4)$\hfill \\
+Trickier: how do you simplify $P(A_2 \cup A_3) \cap A_4 $ if you only know $A_2$, $A_3$, and $A_4$ are independent?  Factor out the $P(A_4)$ and do the same thing. $[P(A_2) + P(A_3) - P(A_2 \cap A_3)]\cdot P(A_4)$\hfill \\
 \hfill \\
 
-\textbf{Conditional Independence}  ${A}$ and ${B}$ are conditionally independent given ${C}$ if $P({A}\cap {B}|{C}) = P({A}|{C})P({B}|{C})$.  E.g. the Bayes coin flip example where you can say $P(\mbox{Heads 1} \cap \mbox{Heads 2} \mid \mbox{Coin 1}) = P(\mbox{Heads 1}|Coin_1) \cdot P(\mbox{Heads 1}|Coin_1) = 2 \cdot P(\mbox{Heads}|Coin_1)$ Conditional independence does not imply independence, and independence does not imply conditional independence.
+\textbf{Conditional Independence} {\tiny (I don't believe we covered this in class; from E)} ${A}$ and ${B}$ are conditionally independent given ${C}$ if $P({A}\cap {B}|{C}) = P({A}|{C})P({B}|{C})$.  E.g. the Bayes coin flip example where you can say $P(\mbox{Heads 1} \cap \mbox{Heads 2} \mid \mbox{Coin 1}) = P(\mbox{Heads 1}|Coin_1) \cdot P(\mbox{Heads 1}|Coin_1) = 2 \cdot P(\mbox{Heads}|Coin_1)$ Conditional independence does not imply independence, and independence does not imply conditional independence.
 
 
 %%%%%%%%%%%%

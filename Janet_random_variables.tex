@@ -7,7 +7,7 @@ Note: this is for objects that are indistinguishable.  You can distinguish a red
 		
 		\item[Binomial Distribution] ("Probability" in 10/12 lecture). A series of \textbf{independent trials}, each resulting in one of \textbf{two} possible outcomes, "success", or "failure".  So yes replacement if it keeps trials independent, and can't have three possible outcomes. 
 			\[ P(k \mbox \ successes) = {{n}\choose{k}}p^k(1-p)^k \mbox{, for \ } k = 0, 1, \dots, n \]
-		Note this is the number of ways of getting k indistinguishable objects in n tries.  Then you multiply by the probability, $p^k$, of getting that number k, and the probability $(1-p)^k$ of getting the rest.  $P(\mbox{2 heads out of three for a coin that gives heads 3/4 of the time}) = (3)*(0.75^2)*(0.25^1)$ \hfill \\
+		Note this is the number of ways of getting $k$ indistinguishable objects in n tries.  Then you multiply by the probability, $p^k$, of getting that number $k$, and the probability $(1-p)^k$ of getting the rest.  $P(\mbox{2 heads out of three for a coin that gives heads 3/4 of the time}) = (3)*(0.75^2)*(0.25^1)$ \hfill \\
 		\hfill \\
 	\end{description}
 
@@ -29,6 +29,27 @@ Note: this is for objects that are indistinguishable.  You can distinguish a red
 	\end{description}
 	
 \section{Random Variables} 
+
+\begin{center}
+\begin{tabular}{ c c c c c }
+ \textbf{R.Var.} & \textbf{pdf} & \textbf{cdf} &   \\ 
+ 	discrete &   pmf (m $=$ mass) & cdf \\
+	continuous & pdf (d $=$ density) & cdf
+ \end{tabular}
+\end{center}
+\hfill \\
+A probability mass function (pmf) is a function that gives the probability that a discrete random variable is exactly equal to some value.
+A probability mass function differs from a probability density function (pdf) in that the latter is associated with continuous rather than discrete random variables; the values of the latter are not probabilities as such: a pdf must be integrated over an interval to yield a probability.
+%\begin{center}
+%\begin{tabular}{ c c c c c }
+ %\textbf{R.Var.} & \textbf{density} & \textbf{cumulative} &   \\ 
+ %	discrete & pmf  or pdf & cdf \\
+%	continuous & pdf & cdf
+ %\end{tabular}
+%\end{center}
+%\hfill \\
+
+
 \subsection{Discrete probability function}
 Suppose S is a finite or countably infinite sample space.  Let $p$ be a real-valued function defined for each element of $S$ such that: {\tiny pg 119} \hfill \\
 (a)  \[ 0 < p(s) \mbox{ for each \ } s \in S  \] 
@@ -80,7 +101,10 @@ Kind of obvious, but all values of the function must be more than zero.  \hfill 
 \subsection{Continuous probability density functions}
 {\tiny (pg 135)} Let $Y$ be a function from a sample space $S$ to the real-numbers (takes values of real numbers; put in something and you get out a real number).  The function $Y$ is called a \textit{continuous random variable} if there exists a function $f_Y(y)$ such that for any real numbers $a$ and $b$ with $a < b$:
 	\[  P(a \leq Y \leq b) = \int_{a}^{b} f_Y(y)dy \]
-The function $f_Y(y)$ is the \textit{probability density function (pdf)} for $Y$.  
+The function $f_Y(y)$ is the \textbf{\textit{probability density function (pdf)}} for $Y$.  Think of "density" as corresponding to how much height there is over the x-axis when you plot $f_Y(y)$ versus $y$.  \hfill \\
+
+\hfill \\ 
+\textbf{The value of $f$ can be greater than 1}.  {\tiny See 10/28 lecture.}   If $f_X(x) = c$ for $ 0 \leq x \leq 1/2$ then the area has to $= 1$ so $c = 2$.  So $p_X(x) = 2$. 
 
 \subsection{Continuous cumulative distribution functions}
 As in the discrete case, the \textit{cumulative distribution function (cdf)} is defined by $F_Y(y) = P(Y \leq y)$: {\tiny (pg 136)}
@@ -120,16 +144,28 @@ If $Y$ is a discrete random variable with pdf $f_Y(y)$, and if $g(Y)$ is a conti
 	\[ E[g(Y)] = \sum\limits_{- \inf}^{\inf} g(y) \cdot f_Y(y)dy \]
 Provided that $E[g(Y)] = \sum\limits_{\inf}^{\inf} | g(y)| \cdot f_Y(y)dy < \inf$  \hfill \\
 \hfill \\
-These two definitions highlight the difference in nomenclature. 
 
+These two definitions highlight the difference in nomenclature.  See page 127 for definition of discrete cdf.  See page 135 for definition of continuous cdf 
 \begin{center}
-\begin{tabular}{ c c c c }
- \textbf{Random Var} & \textbf{x-axis} & \textbf{pdf}  & \textbf{pdf alternative} \\ 
- $X$ & $k$ & $p_X(k)$ & $p(X=k) $ \\  
- $Y$ & $y$ & $f_Y(y)$    
+\begin{tabular}{ c c c c c }
+ \textbf{R.Var.} & \textbf{x-axis} & \textbf{pdf notation} & \textbf{cdf notation}   \\ 
+ $\mbox{\tiny discrete  } X$     & $k$ & $p_X(k)  \mbox{ \tiny or }  P(X=k) $ & $F_X(k) \mbox{ \tiny or } P(X \leq k)  $  \\  
+$\mbox{\tiny continuous  } Y$ & $y$ & $f_Y(y)$                                          & $F_Y(y) \mbox{ \tiny or } P(Y \leq y)  $ 
 \end{tabular}
 \end{center}
 \hfill \\
+
+
+ \begin{center}
+\begin{tabular}{ c c c c c }
+ \textbf{R.Var.} & \textbf{pdf} & \textbf{cdf}  \\ 
+ {discrete  } $X$    & $ p_X(x) = P(X=x)$ & $F_X(x) =  \sum\limits_{z \leq x}p_X(z)$  \\  
+ {continuous  } $Y$ & $p_X(x) = 0$ {\tiny (at one point)}  & $F_Y(y) = \int_{-\infty}^{y}f_Y(y)$ \\  
+\end{tabular}
+\end{center}
+\hfill \\
+ 
+\textbf{NOTE:}  When we start talking about transforms of random variables, you can get $P$ that isn't CDF.  E.g. if $Y = X^3$ then the $P$s in $P(Y = y) = P(X^3 = y) = P(X = y^{1/3}) $ are probability, not cdf.  Note that there is no subscript in this case.  But that it looks rather like $P(X=k)$ in table above.   % $P(X) \mbox{ \tiny or } P(X = y)$
 
 \hfill \\
 Say your random variable is the number on a die face.  Say your function of that random variable is the square of that number.  If you want the expectation of the square, you can sum the products of the squares with the probabilities of the random variable values.  \hfill \\
@@ -150,6 +186,7 @@ let $Y = g(X)$.  Since:
 			& = \sum\limits_{x \in {\cal X}} g(x)P(X=x) = \sum\limits_{x \in {\cal X}} g(x)P({\cal X}) \\ 
 			& \mbox{This is a sum over all the $x$s in the whole set of outcomes (${\cal X}$)} 
 	\end{align*} 
+Note that this works for $g(Y) = Y^2$.  $E(Y^2) =  \int_{-\inf}^{\inf} Y^2 \cdot f_Y(y)dy  $.  {\tiny 10/21 review lecture}  \hfill \\
 Loop over all the values the random variable takes (all $x$s in ${\cal X}$), and sum (probability of that $x$)*(the function applied to that $x$).  \hfill \\
  \hfill \\
  
@@ -171,5 +208,78 @@ Example $\mathbb{E}  (x(x-1))$:
 			& =  \mathbb{E}  (x^2) - \mathbb{E} (x)    \\
 			& \mbox{this might be easier to evaluate}
 	\end{align*} 
+	
+\section{Joint Density}
+
+\textbf{Independence of random variables}.  {\tiny (page 175)} \hfill \\
+$f_{X_1, X_2 , \dots, X_n}(x_1, x_2 , \dots, x_n) = g_1(x_1) g_2(x_2) \dots g_n(x_n)$. \hfill \\
+\hfill \\
+Example: if $X_1$, $X_2$, and $X_3$ are independent random variables each with pdf $f_{X_i}(x_i) = 4x_i^3$. 
+Then $f_{X_1, X_2, X_3}(x_1, x_2, x_3) = (4x_1^3)(4x_2^3)(4x_3^3) = 4^3 x_1^3 x_2^3 4x_3^3$
+
+\hfill \\
+
+\textbf{memoryless property}.  You are waiting for a phone call.  The probability of the phone ringing in the next minute is constant and doesn't depend on how long you have been waiting.  More formally: X = phone call time (?)   \hfill \\
+$P(X \geq s + t \mid x \geq s) = P(x \geq t) $ \hfill \\
+$ $  \hfill \\
+
+\textbf{Combining random variables}
+If they are independent, you can multiply the independent distributions. 
+
+
+Example from 10/26 TA review lecture: 
+Say you have 50 random variables that are unform on $[0, 1]$.  $f_X1 = f_X2 = ... f_X50$.
+The cdf is $F_X(x) = \{0 \mbox{ if } x < 0, x \mbox{ if } x \in [0, 1], 1 \mbox{ if } x > 1\}$.
+Define $Y \equiv \mbox{max}(X_i)$.  Since they are independent, we know 
+\begin{align*}
+	P(Y \leq y) &= P(X_1 \leq y \mbox{ and } X_2 \leq y \mbox{ and }\dots \mbox{ and } X_{50} \leq y) \\
+			& \mbox{\tiny independence allows multipication} \\
+			&= P(X_1 \leq y) \cdot P(X_2 \leq y) \cdot \dots \cdot P(X_{50} \leq y) \\
+			&= F_{X_1}(y) \dots F_{X_{50}}(y) =  y^{50} \\
+		P(Y \leq y) &= y^{50} 
+\end{align*}
+{\tiny differentiate to convert from } $F_Y$ to $f_Y$:  $f_Y(y)=50y^{49}$
+			
+\section{Transforming/Combining Random Variables}
+\subsection{Location/Scale}
+\textbf{$Y = X + b$:} 
+\begin{align*}
+	F_Y(y) &= P(Y \leq y) \\
+			&= P(X \leq y-b)  \\
+			&= F_X(y - b)  \\
+			& \mbox{differentiate} \\
+	      \mathbf{f_Y(y)} & \mathbf{= f_X(y-b)}
+\end{align*}
+
+\subsection{Scaling Variables}
+\textbf{$Y = aX $}: and $a > 0$. 
+\begin{align*}
+	F_Y(y) &= P(Y \leq y) \\
+			&= P(aX \leq y)  \\
+			&= P(X \leq y/a)  \\
+			&= F_X(y/a)  \\
+			& \mbox{differentiate} \\
+		\mathbf{f_Y(y)} & \mathbf{= (1/a) \cdot f_X(y/a)}
+\end{align*}
+
+\subsection{Location and Scale}
+\textbf{$Y = aX + b $}: (and $a > 0$). 
+\begin{align*}
+	F_Y(y) &= P(Y \leq y) \\
+			&= P(aX + b \leq y)  \\
+			&= P(X \leq (y-b)/a)  \\
+			&= F_X((y-b)/a)  \\
+			& \mbox{differentiate} \\
+		\mathbf{f_Y(y)} & \mathbf{= (1/a) \cdot f_X((y-b)/a)}
+\end{align*}
+
+\subsection{Tricks for adding and multiplying random variables}
+
+\textbf{example: add two variables}.  X and Y are uniform on $[0,1]$.  Find pdf of $Z = X + Y$.  Note that your range for Z is [0, 2].  Expect lots of probability around $Z = 1$, and zero at $Z = 0$ and $Z = 1$ 
+\begin{align*}
+	F_Z(z) &= P(Z \leq z) = P(X + Y \leq z) \\
+	& \mbox{\tiny use conditional probability \& independence of X \& Y} \\
+	&= \int_{- \infty}^{\infty} P(X + Y \leq z \mid X = x) \cdot f_X(x)dx
+\end{align*}
 
 
