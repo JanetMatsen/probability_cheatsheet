@@ -93,12 +93,17 @@ You might want $P(x \leq X \leq t) = P(X \leq t) - P(X \leq s - 1)$  {\tiny pg 1
 	\[ F_X(t) = P({s \ in S \mid X(s) \leq t}) \]
 or more simply 
 	\[  F_X(t) = P(X \leq t)  \]
+then {\tiny 10/19 lecture}
+	\[  P(a \leq X \leq b) = F_X(b) - F_X(a)  \]
 	
 \subsection{Continuous random variables}
 A probability function $P$ on a set of real numbers $S$ is called \textbf{continuous} if there exists a function $f(t)$ such that for any closed interval $[a, b] \subset S$, $P([a, b]) = \int_{a}^{b} f(t)dt$. \hfill \\  
 Kind of obvious, but all values of the function must be more than zero.  \hfill \\  
 
 \subsection{Continuous probability density functions}
+Density functions are \textbf{not a probabiliy}.  {\tiny (11/4 lecture)}  \hfill \\ 
+\hfill \\  
+
 {\tiny (pg 135)} Let $Y$ be a function from a sample space $S$ to the real-numbers (takes values of real numbers; put in something and you get out a real number).  The function $Y$ is called a \textit{continuous random variable} if there exists a function $f_Y(y)$ such that for any real numbers $a$ and $b$ with $a < b$:
 	\[  P(a \leq Y \leq b) = \int_{a}^{b} f_Y(y)dy \]
 The function $f_Y(y)$ is the \textbf{\textit{probability density function (pdf)}} for $Y$.  Think of "density" as corresponding to how much height there is over the x-axis when you plot $f_Y(y)$ versus $y$.  \hfill \\
@@ -134,15 +139,69 @@ If $X$ is a discrete random variable, the median, $m$, is that point for which $
 If $Y$ is a continuous random variable, its median is the solution to the integral equation $\int_{- \inf}^{m} f(y)dy = 0.5$  \hfill \\
 If a random variable's pdf is symmetric, both $\mu$ and $m$ will be equal.  
 
+\subsection{Variance}
+{\tiny (pg 157; Sect3.6)}  
+The variance of a random variable is the expected value of its squared deviations from $\mu$.  
+Visually, it is the moment of inertia. \hfill \\  
+\hfill \\  
+Discrete: $Var(X) = \sigma ^2 = E[(X-\mu)^2] = \sum \limits_{\mbox{all } k} (k - \mu)^2 \cdot f_X(k)$  \hfill \\  
+\hfill \\  
+Continuous: if Y is continuous with pdf $f_Y(y)$:   \hfill \\
+Var($Y$) = $\sigma ^2 = E[(Y - \mu)^2] = \int_{-\infty}^{\infty}(y- \mu)^2 \cdot f_Y(y) dy$   \hfill \\  
+\hfill \\  
+Discrete or continuous: $Var(W) = E(W^2) - (E(W))^2 = E(W^2) - \mu ^2$\hfill \\  
+\hfill \\  
+
+\textbf{Standard Deviation}: $\sigma$.  Square root of variance. 
+
+\section{Multiple random variables} 
+\textbf{Double sigma notation}: If you have two $\sum$s, you have a 2D grid of values.  (\href{<https://www.youtube.com/watch?v=BK7OEt9AHIw>}{simple video}).  If the two dimensions start and stop at numbers (or maybe $\infty$) then you have a value in every position of the grid.  There can be cases, however, where the values of the two variables are interdependent (\href{<http://math.stackexchange.com/questions/490723/double-summation-switch>}{example}). 
+
+Example with coefficients that depend on both indices (hasn't come up yet): 
+Consider real numbers $a_{ij}$, where $i$ ranges from 1 to 3, and $j$, from 1 to 2. We thus have the following equality:
+$$\sum_{i=1}^3 \sum_{j=1}^2 a_{ij}=\sum_{i=1}^3(a_{i1}+a_{i2})=(a_{11}+a_{12})+(a_{21}+a_{22})+(a_{31}+a_{32}).$$
+
+
+\textbf{Vocab}:  \hfill \\
+\textbf{joint density} - pdf for a joint distribution. \hfill \\
+\textbf{univariate distribution} - pdf of distribution with exactly 1 random variable \hfill \\
+\textbf{marginal distribution} - \hfill \\
+\hfill \\
+If you have a joint distribution with 2 random variables, the two marginal distributions are univariate distributions \hfill \\
+\hfill \\
+
+See Elizabeth's single-page PDF for lots of formulas. 
+Key ones:  {\tiny 10/28 lecture}
+
+\textbf{One Dimension:}  $ P(a \leq b) = P(X \leq b) - P(X \leq a) = F_X(b) - F_X(a)$   \hfill \\
+\textbf{Two Dimensions:} $ P(a_1 < x \leq a_2 , b_1 < y \leq b_2) = F_{X,Y}(a_2, b_2) - F_{X,Y}(a_1, b_2) - F_{X,Y}(a_2, b_1) + F_{X,Y}(a_1, b_1) $
+
+\textbf{Marginal CDFs:} If you have $F_{X,Y}(a,b)$, \hfill \\ 
+$F_X(a) = P(X \leq a, y < \infty)$ = $F_{X,Y}(a, \infty)$   \hfill \\ 
+
+See Elizabeth's PDFs for a lot more formulae. 
+
+%\begin{center}
+%\begin{tabular}{ c c c }
+% \textbf{R.Var.} & \textbf{1 variable/dimension} & \textbf{2 variables/dimensions}  \\ 
+ %joint CDF  & $  \begin{tabular}{@{}c@{}} $ P(a \leq b) = P(X \leq b) - P(X \leq a) $  \\  $= F_X(b) - F_X(a) $ \end{tabular} $ &  
+%  			\begin{tabular}{@{}c@{}} $ F_{X,Y}(a , b) = P(X \leq a \cap y \leq b) $  \\  $= F_X(b) - F_X(a) $ \end{tabular}  \\  
+%\end{tabular}
+%\end{center}
+%\hfill \\
+
+
 \subsection{Expected values for functions of random variables}
+\textbf{NOTE: Expectations by default don't have X, Y in them.}  
+
 {\tiny (pg 150; Lecture 10/14)}  Suppose $X$ is a discrete random variable with pdf $p_X(k)$.  Let $g(X)$ be a function of $X$.  Then the expected value of the random variable $g(X)$ is given by: \hfill \\
 	\[ E[g(X)] = \sum\limits_{\mbox{all k}} g(k) \cdot p_X(k) \]
 Provided that $\sum\limits_{\mbox{all k}} | g(k)| \cdot p_X(k) < \inf$
 \hfill \\
 \hfill \\
 If $Y$ is a discrete random variable with pdf $f_Y(y)$, and if $g(Y)$ is a continuous function, then the expected value of the random variable $g(Y)$ is: \hfill \\
-	\[ E[g(Y)] = \sum\limits_{- \inf}^{\inf} g(y) \cdot f_Y(y)dy \]
-Provided that $E[g(Y)] = \sum\limits_{\inf}^{\inf} | g(y)| \cdot f_Y(y)dy < \inf$  \hfill \\
+	\[ E[g(Y)] = \int\limits_{- \inf}^{\inf} g(y) \cdot f_Y(y)dy \]
+Provided that $E[g(Y)] = \int\limits_{\inf}^{\inf} | g(y)| \cdot f_Y(y)dy < \inf$  \hfill \\
 \hfill \\
 
 These two definitions highlight the difference in nomenclature.  See page 127 for definition of discrete cdf.  See page 135 for definition of continuous cdf 
@@ -159,13 +218,16 @@ $\mbox{\tiny continuous  } Y$ & $y$ & $f_Y(y)$                                  
  \begin{center}
 \begin{tabular}{ c c c c c }
  \textbf{R.Var.} & \textbf{pdf} & \textbf{cdf}  \\ 
- {discrete  } $X$    & $ p_X(x) = P(X=x)$ & $F_X(x) =  \sum\limits_{z \leq x}p_X(z)$  \\  
+ {discrete  } $X$    & \begin{tabular}{@{}c@{}} $ p_X(x) = P(X=x)$   \\  $= P(X \leq x) - P(X <x)$ \end{tabular}         & $F_X(x)  =  \sum\limits_{z \leq x}p_X(z)$  \\  
  {continuous  } $Y$ & $p_X(x) = 0$ {\tiny (at one point)}  & $F_Y(y) = \int_{-\infty}^{y}f_Y(y)$ \\  
 \end{tabular}
 \end{center}
 \hfill \\
  
-\textbf{NOTE:}  When we start talking about transforms of random variables, you can get $P$ that isn't CDF.  E.g. if $Y = X^3$ then the $P$s in $P(Y = y) = P(X^3 = y) = P(X = y^{1/3}) $ are probability, not cdf.  Note that there is no subscript in this case.  But that it looks rather like $P(X=k)$ in table above.   % $P(X) \mbox{ \tiny or } P(X = y)$
+\textbf{NOTE:}  Need to have intuitive understnading that $P$s are probabilities and $F$s are cdfs.  Can't just assume capitol letters are cdfs.
+%When we start talking about transforms of random variables, you can get $P$ that isn't CDF.  
+E.g. if $Y = X^3$ then the $P$s in $P(Y = y) = P(X^3 = y) = P(X = y^{1/3}) $ are probability, not cdf.  Note that there is no subscript in this case.  
+%But that it looks rather like $P(X=k)$ in table above.   % $P(X) \mbox{ \tiny or } P(X = y)$
 
 \hfill \\
 Say your random variable is the number on a die face.  Say your function of that random variable is the square of that number.  If you want the expectation of the square, you can sum the products of the squares with the probabilities of the random variable values.  \hfill \\
@@ -191,12 +253,16 @@ Loop over all the values the random variable takes (all $x$s in ${\cal X}$), and
  \hfill \\
  
 \textbf{Addition of functions of random variables} 
-{ \tiny (10/14 lecture)}
+Adding sums of expectations always works; doesn't require independence. { \tiny (10/14 lecture)}
 	\begin{align*}
 		\mathbb{E} (g_1(x) + g_2(x)) &=   \sum\limits_{x \in {\cal X}} (g_1(x) + g_2(x))p(x) \\
 			&= \sum\limits_{x \in {\cal X}} g_1(x)p(x) + \sum\limits_{x \in {\cal X}} g_2(x)p(x) \\
-			&=\mathbb{E}  (g_1(x)) + \mathbb{E} (g_2(x)) \\
+			&=\mathbb{E}  (g_1(x)) + \mathbb{E} (g_2(x)) 
 	\end{align*} 
+Simplest case: $E(X + Y) = E(X) + E(Y)$, valid even if X is not statistically independent of Y. \hfill \\
+ \hfill \\
+ 
+ 
 Example $\mathbb{E}  (a(x) + b)$:
 	\begin{align*}
 		\mathbb{E} (a(x) + b) &=  \mathbb{E}  (a(x)) + \mathbb{E} (b) \\
@@ -208,15 +274,91 @@ Example $\mathbb{E}  (x(x-1))$:
 			& =  \mathbb{E}  (x^2) - \mathbb{E} (x)    \\
 			& \mbox{this might be easier to evaluate}
 	\end{align*} 
+Example $\mathbb{E}  (X^2 + Y^2)$:  {\tiny HW 5, Q 3.9.10}
+	\begin{align*}
+		\mathbb{E} (X^2 + Y^2) &= \mathbb{E}(X^2) + \mathbb{E}(Y^2) \\
+	\end{align*} 
+	
+\section{Examples}
+\textbf{Different ways shapes can come up:} \hfill \\
+\underline{Probability of a subset of events.}  \hfill \\
+* E.g. $Y > 2X$.  If you have a $f_{X,Y}(x,y)$ and you want to know what the probability is that $Y > 2X$ you can draw the shape (which should be smaller than the normal ranges of X and Y) and integrate both variables. \hfill \\
+Integrate one using its two obvious limits and the other one using the relationship to the other variable.  {\tiny (E.g. Example 3.7.4 pg 165)}.  \hfill \\
+Or if the distribution is uniform for the range of X, Y your $P(X,Y \mbox{ in some subset of X and Y values}) = $ fraction of the area.  \hfill \\
+   \hfill \\
+
+\underline{A shape imposing restrictions on allowable values of X or Y.}   (Indicator function multiplied on) \hfill \\
+* E.g. $f_{X,Y}(x,y)=1/x, \mbox{ for } 0 \leq y \leq x \leq 1$ {\tiny (problem 3.7.20b)}.  If you want $f_X(x)$ or $f_Y(y)$ you have to use the $y <x$ relationship in the integral bounds.   Be careful with the integral bounds when getting cdf $F$s and expectations, too!  \hfill \\
+* Or, problem 3.7.22 has $f_{X,Y}(X,Y) = 2e^{-x}e^{-y}$ but it is only valid for $y > x$ and 0 otherwise.  
+Here the indicator function is ruining the independence.  I.e. the allowable shape is affecting the sample space.  
+This will affect the CDF (e.g. integrate y from 0 to x), and the expectation.  It will also affect the marginal probabilities for either X or Y.   Use the $y < x$ bound (or $x > y$ bound) in each integration.  \hfill \\
+\hfill \\ 
+
+ \underline{A shape that represents a function of one or more random variables. }  \hfill \\
+** E.g. area of triangle formed by (X,0), (0,Y), (0,0) for X, Y uniform on [0,1].
+In this case the shape is only representing an aggregation of the variables.  It does *not* represent restricting values of either (e.g. $X < Y$).   
+Then $W = (1/2)XY$.  X,Y uniform $ \rightarrow$ $E(XY/2) = (1/2)\cdot \mathbb{E}(X)\mathbb{E}(Y)$.  What is $f_{X,Y}(x,y)$ in this case?  Independence allows us to know $ f_{X,Y}(x,y)  \propto f_X(x)f_Y(y)$ since the limits don't affect each other (both valid over [0,1]).  \hfill \\
+\hfill \\
+     
+ A shape that represents a function of one or more random variables.   \hfill \\
+ \textbf{NO.  this isn't a shape.  It is a line.}
+* $Y = X^2$ Here we could draw a line $Y = X^2$.  If we assume X is uniformly distributed, $f_Y(y) = c \cdot y^2$.   \hfill \\
+** Now say X is not uniform.  Instead $f_X(x)=3x^2$ for $0 < x < 1$ then $F_Y(y) = P(Y \leq y) = P(X^2 \leq y) = P(X \leq y^{1/2}) = F_X(y^{1/2})$.  
+We don't have $F_X(x)$ but can get it; it is $x^3$.  
+Then $F_Y(y) = F_X(y^{1/2}) = (y^{1/2})^3 = y^{2/3}$ and $f_Y(y) = \frac{2}{3} y^{1/3}$  
+We can get $\mathbb{E}(Y)$ two ways now.  \hfill \\
+(Way 1:) This is always true: $E(Y)=E(X^2)$.  
+We can use independence so $E(Y)=E(X^2)=(E(X))^2$.  
+And $E(X)=\int_0^1 x \cdot f_X(x) = \int_0^1 x \cdot 3x^2 = 3/4 $.  Square that to get $9/16$.     \hfill \\
+(Way 2:) Or, $E(g(x)) = \int_0^1 g(x) \cdot f_X(x)  = \int_0^1 x^2 \cdot 3x^2 dx$      \hfill \\
+\hfill \\
+
+
+-- ?? A shape restricting values of one or more variable(s).  Say    \hfill \\
 	
 \section{Joint Density}
 
+If you are given $f_X(x)$ and $f_Y(y)$ you can't know the joint distribution *unless* you are told they are independent.  
+ There are many univariate distributions that can lead to a particular joint distribution if the two variables are not independent.  {\tiny (11/3 TA lecture)}  \hfill \\
+  \hfill \\
+
+
 \textbf{Independence of random variables}.  {\tiny (page 175)} \hfill \\
+Basic: Events $E_1$ and $E_2$ are independent iff $P(E_1 \cap E_2) = P(E_1) \cdot P(E_2)$  \hfill \\
+ \hfill \\
+For Random Variables: $E_1 \equiv \{ X \in A \}$, $E_2 \equiv \{ Y \in B \}$.  
+Then if for \textit{all} subsets of $A$ and $B$, $P(X \in A, Y \in B) =P(X \in A) \cdot P(Y \in B) $ 
+But if you had to check for every single A nd B it wouldn't be very useful.  
+So, \textbf{Discrete Case}: {\tiny 10/30 lecture} \hfill \\  
+\begin{align*}
+	\mbox{Take } & A=\{X\}, B=\{Y\}  \\
+	 \mbox{$X$, $Y$ independent: } & P(X=x, Y=y) = P(X=x) \cdot P(Y=y)   \\
+	P(X \in A, Y \in B) &=  \sum\limits_{x \in {\cal A}} \sum\limits_{y \in {\cal B}} p_{X,Y}(x,y) \\
+	&=  \sum\limits_{x \in {\cal A}} \sum\limits_{y \in {\cal B}} p_{X}(x)  \cdot p_{Y}(y) \\
+	&= ( \sum\limits_{x \in {\cal A}} p_{X}(x)) ( \sum\limits_{y \in {\cal B}}   \cdot p_{X}(y) )\\
+	&= P(X \in A) \cdot P(Y \in B)
+\end{align*}
+\hfill \\
+
+\textbf{10/30 Independence facts} (10/30 lecture)  \hfill \\
+Probabilities don't depend on each other: $P(X \leq x, Y \leq y) = P(X \leq x) \cdot P(Y \leq y)$ \hfill \\
+CDFs don't depend on each other {\tiny (pg 174)}: $F(X \leq x, Y \leq y) = F(X \leq x) \cdot F(Y \leq y)$ \hfill \\
+Also: $f_{X,Y}(x,y) \propto g_1(x)g_2(y)$ \textbf{BUT} limits that tie X and Y can make this break.  Recall the 10/30 example:  $0 < y < x < 1$ for $f_{X,Y}(x,y)=cxy$.  $cxy$ looks separable; be careful!
+
+\hfill \\
+\textbf{notation example:}
 $f_{X_1, X_2 , \dots, X_n}(x_1, x_2 , \dots, x_n) = g_1(x_1) g_2(x_2) \dots g_n(x_n)$. \hfill \\
 \hfill \\
 Example: if $X_1$, $X_2$, and $X_3$ are independent random variables each with pdf $f_{X_i}(x_i) = 4x_i^3$. 
-Then $f_{X_1, X_2, X_3}(x_1, x_2, x_3) = (4x_1^3)(4x_2^3)(4x_3^3) = 4^3 x_1^3 x_2^3 4x_3^3$
+Then $f_{X_1, X_2, X_3}(x_1, x_2, x_3) = (4x_1^3)(4x_2^3)(4x_3^3) = 4^3 x_1^3 x_2^3 4x_3^3$ \hfill \\
+\hfill \\
 
+Example: {\tiny (10/30 lecture)} \hfill \\
+$f_{X,Y}=c \cdot x \cdot y$ for $0 < x < 1$ and $0 < y < 1$.   
+These are independent because you can pull the joint probability apart into single probabilities. \hfill \\
+But if you have $f_{X,Y}=c \cdot x \cdot y$ for $0 < y < x  < 1$ they are not independent.  
+You can tell right away because the bounds are dependent on each other.  You can also draw the $y=x$ line and shade the  $0 < y < x  < 1$ region to see. 
+\hfill \\
 \hfill \\
 
 \textbf{memoryless property}.  You are waiting for a phone call.  The probability of the phone ringing in the next minute is constant and doesn't depend on how long you have been waiting.  More formally: X = phone call time (?)   \hfill \\
@@ -238,9 +380,22 @@ Define $Y \equiv \mbox{max}(X_i)$.  Since they are independent, we know
 			&= F_{X_1}(y) \dots F_{X_{50}}(y) =  y^{50} \\
 		P(Y \leq y) &= y^{50} 
 \end{align*}
-{\tiny differentiate to convert from } $F_Y$ to $f_Y$:  $f_Y(y)=50y^{49}$
+{\tiny differentiate to convert from } $F_Y$ to $f_Y$:  $f_Y(y)=50y^{49}$  \hfill \\
+\hfill \\
+
+Example: Getting the expectation of one variable from a joint distribution {\tiny (10/30 lecture)}  \hfill \\
+If you have $f_{X,Y}(x,y)$, and want $E(X)$, you can get $f_X(x) = \int\limits_{y} f_{X,Y}(x,y)dy$.   \hfill \\
+Then You can get $E(X) = \int_{-\infty}^{\infty} x \cdot f_X(x)dx$.    \hfill \\
+You can also get $F_{X,Y} = \int_{-\infty}^{x} \int_{-\infty}^{y} f_{X,Y}(u,v) du dv$ \hfill \\
+Then you can get $F_X(x) = F_{X,Y}(x, y = \infty)$ \hfill \\
+
 			
 \section{Transforming/Combining Random Variables}
+
+{\tiny (11/2 TA lecture)}  X and Y are independent: $f_X(x)= \frac{1}{2 \pi}exp(-x^2/2)$, $f_Y(y)= \frac{1}{2 \pi}exp(-y^2/2)$.   \hfill \\
+Question: If $U = X^2 + Y^2$, what is $F_U(u)$?  \hfill \\
+Answer: $f_{X,Y}(x,y)=f_X(x)f_Y(y) = \frac{1}{2 \pi} exp((-1/2)(x^2 + y^2))$ \hfill \\
+
 \subsection{Location/Scale}
 \textbf{$Y = X + b$:} 
 \begin{align*}
@@ -250,6 +405,7 @@ Define $Y \equiv \mbox{max}(X_i)$.  Since they are independent, we know
 			& \mbox{differentiate} \\
 	      \mathbf{f_Y(y)} & \mathbf{= f_X(y-b)}
 \end{align*}
+?? Do you see why we are subtracting $c$, not adding it?  $f_{x+c}(t) = f_X(t-c) = P(X=t-c) = P(X+c=t)$  {\tiny (11/2 TA lecture)}
 
 \subsection{Scaling Variables}
 \textbf{$Y = aX $}: and $a > 0$. 
@@ -272,6 +428,9 @@ Define $Y \equiv \mbox{max}(X_i)$.  Since they are independent, we know
 			& \mbox{differentiate} \\
 		\mathbf{f_Y(y)} & \mathbf{= (1/a) \cdot f_X((y-b)/a)}
 \end{align*}
+Visualize the uniform distribution over $[0,1]$.  When you have $W = aX+B$, you scale down so the height is now $1/a$ over $[0, a]$.  Then you shift it to $1/a$ over $[b, b+a]$.   {\tiny (10/30 lecture; last page)} \hfill \\
+  \hfill \\
+Example: (10/30 lecture) (??) Linear function of a normal distribution is a normal distribution.  The mean and variance drop out. (??)   \hfill \\
 
 \subsection{Tricks for adding and multiplying random variables}
 
@@ -281,5 +440,29 @@ Define $Y \equiv \mbox{max}(X_i)$.  Since they are independent, we know
 	& \mbox{\tiny use conditional probability \& independence of X \& Y} \\
 	&= \int_{- \infty}^{\infty} P(X + Y \leq z \mid X = x) \cdot f_X(x)dx
 \end{align*}
+
+\section{Covariance}
+{\tiny (11/4Lecture)}
+Covariance is a measure of how much two random variables change together. \hfill \\
+The sign of the covariance therefore shows the tendency in the linear relationship between the variables.   \hfill \\
+The magnitude of the covariance is not easy to interpret.  \hfill \\
+Variance is a special case of the covariance when the two variables are identical.   \hfill \\
+The normalized version of the covariance, the correlation coefficient, however, shows by its magnitude the strength of the linear relation.  \hfill \\
+  \hfill \\
+ Recall that Var (variance; $\sigma ^2$) is $E[(X - \mu)^2]$.  And that $E[(X - \mu)] = 0$.  {\tiny (pg 156)} \hfill \\
+ 
+ \hfill \\
+$\mbox{Cov}(X,Y)=\mathbb{E}[(X-\mathbb{E}X)(Y- \mathbb{E}Y)]$  \hfill \\
+If you multiply it out: $\mbox{Cov}(X,Y)=(\mathbb{E}(XY)) - (\mathbb{E}X)(\mathbb{E}Y)$  {\tiny (pg 189)}  \hfill \\
+ \hfill \\
+ If $X$ and $Y$ are independent, Cov$(X,Y)=0$.  Of course you can have $Cov(X,Y)=0$ without independence {\tiny (page 189)}.  \hfill \\
+  \hfill \\
+ Var$(X + Y) = \mathbb{E}((X+Y)^2) -  \mathbb{E}((X+Y))^2$
+ $= Var(X) + 2 Cov(X,Y) + Var (Y)$. 
+ If $X$, $Y$ are independent, $Var(X+Y) = Var(X) + Var (Y)$.
+
+\textbf{Covariance versus Variance}: 
+A covariance refers to the measure of how two random variables will change together and is used to calculate the correlation between variables. 
+The variance refers to the spread of the data set Ñ how far apart the numbers are in relation to the mean, for instance.
 
 
