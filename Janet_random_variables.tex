@@ -13,7 +13,7 @@ Note: this is for objects that are indistinguishable.  You can distinguish a red
 
 \subsection{Hypergeometric Distribution}
 	\begin{description}
-		\item[Hypergeometric Distribution]  For \textbf{no replacement}.  Draw $n$ chips from an urn that has $r$ red chips, $w$ white chips, and $r + w = N$.   $n$ is the total number of chips you will draw; $k/n$ will be the fraction you draw that are red. Draw chips without replacement.  Note k must be < r or the problem doesn't make sense and something like ${{r} \choose {k}} = {{1} \choose {5}} = ?!?!$ can happen.  
+		\item[Hypergeometric Distribution]  For \textbf{no replacement}.  Draw $n$ chips from an urn that has $r$ red chips, $w$ white chips, and $r + w = N$.   $n$ is the total number of chips you will draw; $k/n$ will be the fraction you draw that are red. Draw chips without replacement.  Note k must be $<$ r or the problem doesn't make sense and something like ${{r} \choose {k}} = {{1} \choose {5}} = ?!?!$ can happen.  
 			\[ P(\mbox{k red chips chosen}) = \frac{ {{r} \choose {k}} {{w} \choose {n-k}} }{{{N}\choose{k}}} \] % \frac{{{r}\choose{k}}{w \chose {n-k}}}{N \chose k} \]
 			\[ \frac{\mbox{(ways to draw \ k red from r)}*\mbox{(ways to draw n-k non-red from r)}}{\mbox{total number of combinations of chips you can draw}} \] \hfill \\
 		Note: this is the same as	{\tiny pg 111}
@@ -119,9 +119,16 @@ Also written as  {\tiny (Definition 3.4.3: pg 137)}
 The cdf in this case is an integral of $f_Y(y)$.  Note that now we have $f_Y(t)$ or $f_Y(r)$, not $f_Y(y)$.  We are still integrating over the x-axis ($y$) but we can't have $y$ in $dy$ and in the integration limits.   \hfill \\  
 Also note the derivative of the cdf is the pdf:
 	\[  \frac{d}{dy}F_Y(y) = f_Y(y) \]
-	
+ \hfill \\  
+  \hfill \\  
+\subsection{Indepenence}	
+If X, Y are independent, $P_{X,Y}(x,y) = P_X(x) \cdot P_Y(y)$ for all $x$, $y$.
+Note there are cases when $E(XY) = E(X)E(Y)$ but this does \textbf{not} imply independence. {\tiny (See Lec 11/4)}
+ \hfill \\  	
+ \hfill \\  
+ 
 \subsection{Expected Values}
-Let $X$ be a discrete random variable with probability function $p_X(k)$.  The \textit{expected value} of $X$ is denoted E(X) (or sometimes $\mu$ or $\mu x$ and is given by: {\tiny pg 140}   \hfill \\  
+Let $X$ be a discrete random variable with probability function $p_X(k)$.  The \textit{expected value} of $X$ is denoted $E(X)$ (or sometimes $\mu$ or $\mu x$ and is given by: {\tiny pg 140}   \hfill \\  
 \textbf{Discrete:}
 	\[  E(X) = \mu = \mu x = \sum\limits_{\mbox{all } k} k*p_X(k)  \]
 \textbf{Random:}	  \hfill \\  
@@ -143,6 +150,7 @@ If a random variable's pdf is symmetric, both $\mu$ and $m$ will be equal.
 {\tiny (pg 157; Sect3.6)}  
 The variance of a random variable is the expected value of its squared deviations from $\mu$.  
 Visually, it is the moment of inertia. \hfill \\  
+Always positive. {\tiny -E.T. MT2 review} \hfill \\  
 \hfill \\  
 Discrete: $Var(X) = \sigma ^2 = E[(X-\mu)^2] = \sum \limits_{\mbox{all } k} (k - \mu)^2 \cdot f_X(k)$  \hfill \\  
 \hfill \\  
@@ -152,7 +160,17 @@ Var($Y$) = $\sigma ^2 = E[(Y - \mu)^2] = \int_{-\infty}^{\infty}(y- \mu)^2 \cdot
 Discrete or continuous: $Var(W) = E(W^2) - (E(W))^2 = E(W^2) - \mu ^2$\hfill \\  
 \hfill \\  
 
-\textbf{Standard Deviation}: $\sigma$.  Square root of variance. 
+Variances always add (independence not required).  And, 
+$Var(aX + bY) = a^2\cdot Var(X) + b^2\cdot Var(Y) $ {\tiny (page 189)} \hfill \\  
+\hfill \\  
+
+\textbf{Standard Deviation}: $\sigma$.  Square root of variance. \hfill \\  
+
+\subsection{Misc.}
+$F_X(x) = P(X \leq x)$  \hfill \\   
+$p_X(x) = P(X=x) = P(X \leq x) - P(X < x)$ (discrete)  {\tiny (lec 10/28)}  \hfill \\  
+ \hfill \\  
+ PDFs can have values greater than 1. 
 
 \section{Multiple random variables} 
 \textbf{Double sigma notation}: If you have two $\sum$s, you have a 2D grid of values.  (\href{<https://www.youtube.com/watch?v=BK7OEt9AHIw>}{simple video}).  If the two dimensions start and stop at numbers (or maybe $\infty$) then you have a value in every position of the grid.  There can be cases, however, where the values of the two variables are interdependent (\href{<http://math.stackexchange.com/questions/490723/double-summation-switch>}{example}). 
@@ -281,6 +299,14 @@ Example $\mathbb{E}  (X^2 + Y^2)$:  {\tiny HW 5, Q 3.9.10}
 	
 \section{Examples}
 \textbf{Different ways shapes can come up:} \hfill \\
+\underline{Probability of landing below some x value within a weird 2D shape.}  {\tiny 10/19 lecture}  \hfill \\
+ If you have a diamond with points on the X and Y axes, but the top/bottom is cur off, what is probability of landing at some x?
+ (What is $f_X(x)$?)  
+ You can't just derive something because X is less probable as you go out to the points.  
+ Use the classic trick: start with the CDF. v
+ $F_X(x) = P(X \leq x) = 1 - F_X(x) = P(X \geq x) $
+ \hfill \\
+ \hfill \\
 \underline{Probability of a subset of events.}  \hfill \\
 * E.g. $Y > 2X$.  If you have a $f_{X,Y}(x,y)$ and you want to know what the probability is that $Y > 2X$ you can draw the shape (which should be smaller than the normal ranges of X and Y) and integrate both variables. \hfill \\
 Integrate one using its two obvious limits and the other one using the relationship to the other variable.  {\tiny (E.g. Example 3.7.4 pg 165)}.  \hfill \\
@@ -317,6 +343,14 @@ And $E(X)=\int_0^1 x \cdot f_X(x) = \int_0^1 x \cdot 3x^2 = 3/4 $.  Square that 
 -- ?? A shape restricting values of one or more variable(s).  Say    \hfill \\
 	
 \section{Joint Density}
+
+$F_{X,Y}(a, b) = P(x \leq a \cap y \leq b) $.  \hfill \\
+The $ \cap $ is often implicit: $P(x \leq a, y \leq b)$  {\tiny (10/28 lecture)}
+ \hfill \\
+ \hfill \\
+ To get marginal: $F_X(a) = P(x \leq a) = P(X \leq a, y \leq \inf)$  {\tiny (10/28 lecture)}  \hfill \\
+$ = F_{X,Y}(a, \inf)$   \hfill \\
+  \hfill \\
 
 If you are given $f_X(x)$ and $f_Y(y)$ you can't know the joint distribution *unless* you are told they are independent.  
  There are many univariate distributions that can lead to a particular joint distribution if the two variables are not independent.  {\tiny (11/3 TA lecture)}  \hfill \\
@@ -434,6 +468,10 @@ Example: (10/30 lecture) (??) Linear function of a normal distribution is a norm
 
 \subsection{Tricks for adding and multiplying random variables}
 
+\textbf{you can get mixures of fs, Ps, and Fs and still make the connection.}
+Start with converting things to Fs, then use Ps, then move back to fs if desired.  See dog eared notebook page of MT2 practice problems.  And Lecture 10/30.  {\tiny This works great for location/scale.  I'm not sure how applicable it is for R.V. addition. }\hfill \\
+\hfill \\
+
 \textbf{example: add two variables}.  X and Y are uniform on $[0,1]$.  Find pdf of $Z = X + Y$.  Note that your range for Z is [0, 2].  Expect lots of probability around $Z = 1$, and zero at $Z = 0$ and $Z = 1$ 
 \begin{align*}
 	F_Z(z) &= P(Z \leq z) = P(X + Y \leq z) \\
@@ -459,10 +497,54 @@ If you multiply it out: $\mbox{Cov}(X,Y)=(\mathbb{E}(XY)) - (\mathbb{E}X)(\mathb
   \hfill \\
  Var$(X + Y) = \mathbb{E}((X+Y)^2) -  \mathbb{E}((X+Y))^2$
  $= Var(X) + 2 Cov(X,Y) + Var (Y)$. 
- If $X$, $Y$ are independent, $Var(X+Y) = Var(X) + Var (Y)$.
+ If $X$, $Y$ are independent, $Var(X+Y) = Var(X) + Var (Y)$. \hfill \\
+
+\hfill \\
 
 \textbf{Covariance versus Variance}: 
 A covariance refers to the measure of how two random variables will change together and is used to calculate the correlation between variables. 
-The variance refers to the spread of the data set Ñ how far apart the numbers are in relation to the mean, for instance.
+The variance refers to the spread of the data set Ñ how far apart the numbers are in relation to the mean, for instance. \hfill \\
+\hfill \\
+
+\textbf{$\mbox{Cov}(X,X) = \mbox{Var}(X)$}. {\tiny Midterm 2 practice problem.} \hfill \\
+Because $\mbox{Cov}(X,X)=(\mathbb{E}(XX)) - (\mathbb{E}X)(\mathbb{E}X)$.  We can solve for $\mathbb{E}(XX)$ using the fact that correlation = 1 and $\rho(X,X)=\mbox{cov}(X,Y)/\sqrt{\mbox{var}(X)\mbox{var}(X)} = \mbox{cov}(X,X)/\mbox{var}(X)$.
+ $1 = \rho(X,X)= \mbox{cov}(X,X)/\mbox{var}(X)$ so \textbf{$ \mbox{cov}(X,X) = \mbox{var}(X)$}.
+
+\section{Correlation}
+
+{\tiny (Lec. 11/4)}  Correlation: $\rho = \frac{\mbox{Cov}(X,Y)}{\sqrt{\mbox{Cov}(X)\mbox{Cov}(Y)}}$
+Bounded by $-1 \leq \rho \leq 1$ \hfill \\
+When is it 1 or -1?  When Var$(X-bY) = 0$.  Var $= 0$ when the probability mass is all at one point, not spread out. \hfill \\
+This happens when X is a linear function of Y. \hfill \\
+
+\section{Expectation, Variance, Covariance, and Correlation}
+\textbf{Scaling \& shifting: }  \hfill \\
+$E(aX + b) = aE(X) + b$  \hfill \\
+$Var(aX + b) = a^2 Var(X)$  {\tiny(b doesn't matter.  Squared is b/c Var = $\sigma^2$; $\sigma$ scales w/ a so you get $a^2$)} \hfill \\
+$Cov(aX + b, Y) = a \cdot Cov(X,Y)$ {\tiny(Has units, so keep factor of a.  b doesn't matter)}  
+		Also: $Cov(aX + b, cY + d) = a\cdot c \cdot Cov(X,Y)$ \hfill \\
+$Corr(aX + b, Y) = Corr(X, Y)$  {\tiny Use properties above to see.  Also, dimensionless so a can't be there.} \hfill \\
+\hfill \\
+
+\textbf{Cov, and Corr with itself: }  {\tiny Note that you can't have E or Var of something w/ itself: univariate. }  \hfill \\
+$Cov(X, X) = Var(X)$  {\tiny From the definition of Variance. } \hfill \\
+$Corr(X, X) = 1$ \hfill \\
+ \hfill \\
+ 
+
+\textbf{Cov, and Corr with an independent var.}  Say X, Y are independent. \hfill \\
+$E(XY) = E(X)E(Y)$    {\tiny Can get there from a g(X,Y) idea.  g(X,Y) is xy.  
+	Then $E(XY) = \int \int g(X,y) \cdot f_{X,Y}(x,y) =  \int \int xy \cdot f_{X,Y}(x,y) =  \int x \cdot f_X(x) \int y \cdot f_{Y}(y) $ . }   \hfill \\
+$Cov(X, Y) = 0$   and  $Cov(aX, bY) = 0$  \hfill \\ \hfill \\
+$Corr(X, Y) = 0$   \hfill \\
+\hfill \\
+
+\textbf{With constants:}  \hfill \\
+$E(a) = aE(1) = a$  \hfill \\
+$Var(a) = a^2 Var(1) = 0$  {\tiny ($=E[(a-E(a))^2] = E[(a-a)^2] = E[0] = 0$)} \hfill \\
+$Cov(a, Y) = a \cdot Cov(1,Y)= a \cdot 0 = 0$ {\tiny(E((1 - E(1))) = 0.  Also Y isn't dependent on a.}  \hfill \\
+$Corr(a, Y) =  0 $ {\tiny But it doesn't really make sense to talk about corr w/ constant.  Lec 11/4 }  \hfill \\
+\hfill \\
+
 
 
