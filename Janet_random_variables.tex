@@ -391,7 +391,8 @@ Example: {\tiny (10/30 lecture)} \hfill \\
 $f_{X,Y}=c \cdot x \cdot y$ for $0 < x < 1$ and $0 < y < 1$.   
 These are independent because you can pull the joint probability apart into single probabilities. \hfill \\
 But if you have $f_{X,Y}=c \cdot x \cdot y$ for $0 < y < x  < 1$ they are not independent.  
-You can tell right away because the bounds are dependent on each other.  You can also draw the $y=x$ line and shade the  $0 < y < x  < 1$ region to see. 
+You can tell right away because the bounds are dependent on each other.  You can also draw the $y=x$ line and shade the  $0 < y < x  < 1$ region to see.  \hfill \\
+Erick: "Another way to say it is to remember that the function itself is c x y in some region and zero otherwise, and so the function itself is not a product."
 \hfill \\
 \hfill \\
 
@@ -400,11 +401,9 @@ $P(X \geq s + t \mid x \geq s) = P(x \geq t) $ \hfill \\
 $ $  \hfill \\
 
 \textbf{Combining random variables}
-If they are independent, you can multiply the independent distributions. 
-
-
 Example from 10/26 TA review lecture: 
-Say you have 50 random variables that are unform on $[0, 1]$.  $f_X1 = f_X2 = ... f_X50$.
+Say you have 50 random variables that are uniform on $[0, 1]$.  $f_X1 = f_X2 = ... f_X50$ and independent.
+The joint probability density function of these random variables is the product of the PDFs of the individual random variables.
 The cdf is $F_X(x) = \{0 \mbox{ if } x < 0, x \mbox{ if } x \in [0, 1], 1 \mbox{ if } x > 1\}$.
 Define $Y \equiv \mbox{max}(X_i)$.  Since they are independent, we know 
 \begin{align*}
@@ -545,6 +544,280 @@ $Var(a) = a^2 Var(1) = 0$  {\tiny ($=E[(a-E(a))^2] = E[(a-a)^2] = E[0] = 0$)} \h
 $Cov(a, Y) = a \cdot Cov(1,Y)= a \cdot 0 = 0$ {\tiny(E((1 - E(1))) = 0.  Also Y isn't dependent on a.}  \hfill \\
 $Corr(a, Y) =  0 $ {\tiny But it doesn't really make sense to talk about corr w/ constant.  Lec 11/4 }  \hfill \\
 \hfill \\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Bernoulli}
+{\tiny Wikipedia:}  The probability distribution of a random variable which takes the value 1 with success probability of p and the value 0 with failure probability of q=1-p. 
+It can be used to represent a coin toss where 1 and 0 would represent "head" and "tail" (or vice versa), respectively. In particular, unfair coins would have $p \neq 0.5$.
+
+\textbf{Things based on Bernoulli}:
+\begin{itemize}
+	\item The \textbf{inter-arrival time}  % http://www.math.uah.edu/stat/poisson/Introduction.html
+	\item The \textbf{negative binomial distribution} (with stopping parameter n and success parameter p).
+	\item The \textbf{binomial distribution} counts the number of events in a number of trials. 
+\end{itemize}
+
+\subsection{Bernoulli relation to Bionomial}
+"A success/failure experiment is also called a Bernoulli experiment or Bernoulli trial; when n = 1." {\tiny (Wikipedia)}  \hfill \\
+ \hfill \\
+Later: "The Bernoulli distribution is a special case of the binomial distribution, where n = 1. 
+Symbolically, X ~ B(1, p) has the same meaning as X ~ Bern(p). 
+Conversely, any binomial distribution, B(n, p), is the distribution of the sum of n Bernoulli trials, Bern(p), each with the same probability p."  {\tiny (Wikipedia)}
+
+Also, recall that as n gets large but p is fixed $\frac{X-np}{\sqrt{n p (1-p)}}$ is approx N(0,1).  Below, if Bernoulli n gets large and p get small you get Poisson. 
+
+\subsection{Bernoulli relation to Geometric}
+ {\tiny (11/20 Lec)}.  Independent trials, each with probability P(success) = p.  W = number of trials to first success. 
+\begin{align*}
+	 P(W > k) &= P(\mbox{0 successes in k trials}) \\
+	 	& = (1-p)^k  \\
+	\mbox{Now to get W=k} & \mbox{ we subtract b/c discrete (like differentiating)} \\
+	\mbox{Note: subtracting the} & \mbox{ bigger number of events from the smaller} \\
+	P(W = k) &= P(W > k - 1) - P(W > k)\\
+		& = (1-p)^{k-1} - (1-p)^k \\
+		& = (1-p)^{k-1}[1-(1-p)] \\
+	\mathbf{P(W = k)} & = \mathbf{(1-p)^{k-1} \cdot p}  \\
+	\mbox{i.e.} & \mbox{ Geom(P), mean (1/p)}
+\end{align*} 
+Geometric also has forgetting property: 
+$P(W > k+m | W > k) = \frac{P(W > k + m)}{P(W > k)} = \frac{(1-p)^{k+m}}{(1-p)^k} = (1-p)^m = P(W>m)$ \hfill \\
+\hfill \\
+
+Geometric and exponential are the discrete/continuous analogs.  Expo w/ parameter $\lambda$ has mean $1/\lambda$.  Geom(p) has mean $1/p$.  Don't do continuity correction on exponential.   {\tiny (11/20 Lec)} 
+$\mathbb{E}(W) = 1/p$ and Var(W)=$\frac{1-p}{p^2}$  \hfill \\
+\hfill \\
+
+
+\textbf{Number of \underline{failures} before 1st success:}   {\tiny (11/20 Lec)}\hfill \\
+W* = number of failures before 1st success. 
+Same pdf, just slightly different notation.  W* = W - 1,  where $P(W=k) = (1-p)^{k-1}p, k = 1, 2, \dots$ \hfill \\
+Then $P(W*=k) = P(W=k+1) = (1-p)^k p$   \hfill \\
+$\mathbf{ P(W^* = k) = (1-p)^k p}$, \hfill \\
+$\mathbb{E}(W^*) = 1/p - 1 = \frac{1-p}{p}$ Var(W*)=$\frac{1-p}{p^2}$  = Var(W)  \hfill \\
+ \hfill \\
+
+\textbf{Number of failures before $r^{th}$ success:}   {\tiny (11/20 Lec)}\hfill \\
+$W_r^*$ = number of failures before $r^{th}$ success.   $W_r^* = 0, 1, 2, \dots$  \hfill \\
+$\mathbb{E}(W_r^*) = r/p - r = r(1-p)/p$ \hfill \\
+Var($W_r^*) = r(1-p)/p^2$ = Var($W_r$) \hfill \\
+Subtracting shifts mean but not variance. 
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Poisson process}
+\textbf{Things based on Poisson process}:
+\begin{itemize}
+	\item exponential 
+\end{itemize}
+
+Internet tidbids: 
+\begin{itemize}
+	\item Several important probability distributions arise naturally from the Poisson processÑthe Poisson distribution, the exponential distribution, and the gamma distribution. % http://www.math.uah.edu/stat/poisson/
+	\item In some sense, the Poisson process is a continuous time version of the Bernoulli trials process  % http://www.math.uah.edu/stat/poisson/Introduction.html
+\end{itemize}
+
+\textbf{"Events happening randomly and independently over time at rate $\lambda$"}  {\tiny (11/18 Lec)} \hfill \\
+In a very small time interval of length h:  \hfill \\
+*P(0 events) $= 1 - \lambda h$  \hfill \\
+*P(1 events) $= \lambda h$  \hfill \\
+*P( $>$ 1 event) $\approx 0$  \hfill \\
+Divide time from 0 to s up into K bits of length h.  K is large, h is small. $Kh \equiv s$ (they add up). \hfill \\
+The number of events is binomial.  And, in each interval event or not is Bern($\lambda h)$.  \hfill \\
+Bin$(K, \lambda h) \approx $ Poisson($K \lambda h$) $\cong$ Poisson($\lambda s$).  {\tiny (11/18 Lec)} \hfill \\
+(Her s appears to be equal to book's T.) \hfill \\
+\hfill \\
+B(20,000, 1/2,000) $\approx$ Poisson (20,000/2000) = Poisson (10). {\tiny (11/20 Lec)} \hfill \\
+\hfill \\
+
+\textbf{Birthday example} \hfill \\
+First note that P(0 pairs) = $(365 \cdot 364 \cdot \dots 335)/365^{31} = 0.2695$ \hfill \\
+Without Poisson:  \hfill \\
+1a. Derive probability of pairs.  For 31 students, there are ${31 \choose 2} = 465$  pairs.  \hfill \\
+2a. Expected number of pairs: 465/365 = 1.274 \hfill \\
+With Poission: \hfill \\
+* Note large n, small p.  n = 465, p = 1/365.  So $\lambda$ = np = 465/365.  \hfill \\
+* Note that pairs are not quite independent.  (see notes). \hfill \\
+But, P(X=0) = $e^{- \lambda} = e^-1.274 = 0.279$.  Close to true answer above. \hfill \\
+If you want $P(X >2),$ do $1 - P(X=0) - P(X=1) = 1 - \mu^0*e^{-\mu}/0! - \mu^1*e^{-\mu}/1! = 0.364$ 
+Note that we don't have time in the framework of the problem; we aren't waiting for busses.  \hfill \\
+See notes for P(3 people share).  n is large and p is smaller, so Poisson a better approximation.  \hfill \\
+ \hfill \\
+ 
+ \textbf{Adding Poisson}.  If $s_1$ and $s_2$ are non-overlapping time intervals and $X_1 = Po(\lambda s_1)$ and $X_2 = Po(\lambda s_2)$ then $X_1$ + $X_2$ = total number of events in times s = $s_1 + s_2$ then $X_1$ + $X_2 = Po(\lambda s)$.
+ And if you sum up n $X_i$s as Y, by CLT $frac{Y - n \mu}{\sqrt(n \mu)}$ is approx N(0,1).  
+  {\tiny (11/20 Lec)}  \hfill \\
+  ?? What if your lambdas are different?  \hfill \\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Poisson Distribution}
+One of the distributions that you can derive from the Poisson process.  -- Erick.   \hfill \\
+
+% http://individual.utoronto.ca/zheli/poisson.pdf
+The Poisson distribution is a discrete probability distribution that expresses
+the probability of a number of events occurring in a fixed period of time if
+these events occur with a known average rate and independently of the time
+since the last event.
+
+PMF: $\frac{\lambda^k}{k!} e^{-\lambda}$  \hfill \\
+
+$\!f(k; \lambda)= \Pr(X{=}k)= \frac{\lambda^k e^{-\lambda}}{k!}$  \hfill \\
+
+$\lambda=\operatorname{E}(X)=\operatorname{Var}(X)$  {\tiny (Wikipedia)} \hfill \\
+Mean = variance.  $Var(X) = \mu$  {\tiny (Lec. 11/18)} \hfill \\
+ \hfill \\
+ 
+If Binomial n is large but p is small such that $np = \mu$ then $E(X) = np = \mu$ and Var$(X) = n \cdot p(1-p) = \mu (1-p) \approx \mu$  {\tiny (Lec. 11/18)}
+
+{\tiny Wikipedia:} A \textbf{discrete} probability distribution that expresses the probability of a given number of events occurring in a fixed interval of time and/or space if these events occur with a known average rate and independently of the time since the last event.  \hfill \\
+Can get the average number of events per time; that's $\lambda$.  Then you can calculate the probability of getting, say, 10 events in that time span. 
+
+Relation to Bernoulli:  If the events are rare, each event is Bernoulli. 
+Notes: \hfill \\
+* distribution on nonnegative integers {\tiny (11/18 Lec)} \hfill \\
+* doesn't make sense to scale/shift the Poission  {\tiny (11/18 Lec)} \hfill \\
+\hfill \\
+
+ Book's 3 formulas for Poisson (pg 232):  \hfill \\
+$p_X(k) = e^{-np}\frac{(np)^k}{k!}$  \hfill \\
+$p_X(k) = e^{-\lambda} \frac{\lambda^k}{k!}$  \hfill \\
+$p_X(k) = e^{-\lambda T}\frac{(\lambda T)^k}{k!}$  \hfill \\
+Note that $np = \lambda$ \hfill \\
+We derived $P(X=k) = \frac{\mu ^k}{k!} e^{-\mu}$ in 11/18 Lecture.  From Binomial as N large but p small. \hfill \\
+
+\subsection{Adding Poissons}
+{\tiny (11/20 Lec)}  If you have two non-overlapping time intervals $S_1$ and $S_2$ ($S = S_1 + S_2$) then they are independent because they are non overlapping.  
+Say $X_1 =  Po(\lambda S_1)$ and $X_2 =  Po(\lambda S_2)$.  
+Then $X_1 + X_2$ events in time $S = S_1 + S_2$ is Po($\lambda S$).    \hfill \\
+In general for independent $X_i \sim Po(\lambda S_i)$, $\sum_{1}^{k} X_i$ is Poisson with mean $\lambda(S_1 + S_2 + \dots S_k)$.    \hfill \\
+Similarly if $X_1 + \dots + X_n$ are independent Po($\mu$), $Y = \sum_{1}{n}X_i$ is Poisson with mean $n \mu$ and variance  $n \mu$.  So b the Central Limit Theorem $\frac{Y - n \mu}{\sqrt(n \mu)}$ is approx N(0,1).    \hfill \\
+
+\subsection{Adding Poissons and knowing the total number}
+{\tiny (Bus example from 11/25)}.  
+If you know the number of red busses and blue busses is n, what is the probability that the number of red busses is k? 
+Each process is Po$(\lambda_i t)$ and independent.  The total is Po($\sum \lambda_i t$).  
+\begin{align*}
+	 P(\mbox{\# of red} = k | & \mbox{\# of red \& blue} = n)  \\
+	 	&= P(R = k | R + B = n) \\
+		& = \frac{P(R=k \cap B + R = n)}{P(R+B = n)} \\
+		& = \frac{P(R=k \cap B = n-k)}{P(R+B = n)} \\
+		& = \frac{P(R=k)P(B = n-k)}{P(R+B = n)} \\
+		& = \frac{[\frac{exp(-\lambda t)(-\lambda t)^k}{k!}] [\frac{\exp(-\mu t)(-\mu t)^{n-k}}{(n-k)!}] }{\frac{\exp(-(\lambda + \mu) t)((\lambda + \mu) t)^{n}}{(n)!} } \\
+		& \mbox{lots cancels out} \\
+		&= \frac{n!}{k!(n-k)!} \frac{\lambda^k \mu^{n-k}}{(\lambda + \mu)^n} \\
+		&= {n \choose k} \frac{\lambda}{\lambda + \mu} (\frac{\mu}{\lambda + \mu})^k  \\
+		&= Bin(n, \frac{\lambda}{\lambda + \mu}) \\
+\end{align*} 
+
+Special case of next 1 bus:  \hfill \\
+Given next bus is R or B, P(red) = $\lambda/(\lambda + \mu)$ = $3/(3+2) = 0.6$ \hfill \\
+Now say there is Red at 3/hr, Blue at 2/hr, and green at 4/hr.  P(next bus green) = 4/(4+2+3) = 4/9.  Don't need to re-derive the binomial.  \hfill \\
+\hfill \\
+
+If you want to know the probability that 10 of the next 100 buses are Red, use the Binomial theorem.  If you want to know the probability that $<$ 10 of the next 100 buses are Red, use the Central Limit Theorem approximation of the binomial.  This was in HW9.  \textbf{REVIEW IT} 
+
+\hfill \\
+Given exactly 1 bus in the next t hours, \underline{when} does it occur?  Use CDF
+\begin{align*}
+	F_T(s) &= P(T \leq s | \mbox{one event in} (0,t) \mbox{, process rate } \lambda) \\
+		&= \frac{P(\mbox{1 event in (0,s) and 0 in (s, t)})}{P(\mbox{1 in (0,t)})} \\
+    		&= \frac{\frac{ \exp({-\lambda s})(\lambda s)^1 }{1!} \frac{\exp{(-\lambda (t-s))}(\lambda (t-s))^0}{0!}}  {\exp{(-\lambda t)}(\lambda t)^1/1!} \\
+		&= \frac{ \exp({-\lambda s})(\lambda s) \exp({-\lambda (t-s))}}  {\exp({-\lambda t})(\lambda t)} \\
+		&= s/t
+\end{align*}
+To get the density, differentiate.  $f_T(s) = 1/$ for $0 \leq s \leq t$ and 0 otherwise. 
+
+\subsection{Conditioning on total \# with one process}
+{\tiny (Bus example from 11/25)}.  Green buses come at rate 4/hour.  \hfill \\
+What is P(4 green buses in next 15 minutes $|$ 4 in next hour)?  \hfill \\
+= P(4 green buses in next 15 minutes $\cap$ 0 in 3/4 hour after)/P(4 in next hour).   \hfill \\
+Use Po($\lambda$) with t = 1/4, t = 3/4, and t = 1. 
+\begin{align*}
+ 	&= \frac{\frac{e^{-4(1/4)}(4 \cdot 1/4)^4/4!}{e^{-4\cdot (3/4)}}   }{e^{-4(1)}4^4/4!}  \\
+	&= (1/4)^4. 
+\end{align*}
+\hfill \\ \hfill \\
+
+{\tiny (Computer bug example from 11/25)}. \hfill \\
+Assume total number of bugs in a piece of software is Po($\mu$).   \hfill \\
+W = total \# of bugs.  X = total \# of bugs detected, Y = \# of bugs not detected yet.  
+\begin{align*}
+	P(X=x, Y=y) &= P(X=x, W=x+y) \\
+		&= P(X=x \mid W=x+y)\cdot P(W=x+y) \\
+		& \mbox{(used conditional probability)} \\
+		&= \mbox{Bin(x+y, p) times Po(w=x+y)} \\
+		& \mbox{fill in Binomial and Poisson:} \\
+		&= {x + y \choose y} p^x(1-p)^y \cdot \frac{e^{-\mu} \mu^{x+y}}{(x+y)!} \\
+		& \mbox{simplify, but expand exponential:} \mu p +\mu(1-p) = \mu  \\
+		&= \frac{1}{x!y!}(\mu p)^x(\mu(1-p))^y \exp(-(\mu p + \mu (1-p))) \\
+		&= \frac{(\mu p)^x e^{-\mu p}}{x!} \frac{(\mu(1-p))^y e^{-\mu (1-p)}}{y!} \\
+		& \mbox{that's a Poisson(x) and a Poisson(Y)} \\
+		& \mbox{It factorizes \& ranges are independent.  Independent!} \\
+		&= P(X) \cdot P(Y) \\
+		& \mbox{ where } X \sim Po(\mu p) \mbox{, and } Y \sim Po(\mu(1-p)) \\
+\end{align*}
+You aren't likely to have less bugs just because you found one.  
+How this is different from the bus problems: you knew the total of R and B = n, or that there \underline{were} going to be 4 buses total but you don't know when they will come. \textit{Ask Erick his summary?}  \hfill \\ \hfill \\
+Questions: can I jump straight to Binomial for these Poissons? 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exponential}
+Waiting time for Poisson Process.  Expo($\lambda$)
+
+"The exponential distribution (a.k.a. negative exponential distribution) is the probability distribution that describes the time between events in a Poisson process, i.e. a process in which events occur continuously and independently at a constant average rate."  {\tiny (Wikipedia)}
+
+ In many respects, the geometric distribution is a discrete version of the exponential distribution. Constant rate and memoryless. % http://www.math.uah.edu/stat/poisson/Exponential.html
+ 
+  \hfill \\
+  \textbf{PDF and CDF.}  \hfill \\
+  PDF: $\lambda \exp(-\lambda x)$.  Note:  x = s = time.   \hfill \\
+  CDF: $1 - \exp(-\lambda x)$.  Note:    x = s = time.   \hfill \\
+  mean = expectation = $\lambda$, variance = $1/\lambda^2$    \hfill \\
+  \hfill \\
+ 
+ {\tiny (11/18 Lec)} \textbf{Waiting times in a Poisson process with rate $\lambda$.} 
+ pdf: $f_T(s) = \lambda \exp(-\lambda s)$ on $s \geq 0$ and 0 otherwise.  \hfill \\
+  \hfill \\
+Comes from T being time to next event, $P(T > S) = $ P(0 events in time S) = P((Poisson mean $\lambda s$) =0) = $exp(\lambda s)$.  
+\underline{Falls right out of Poisson Distribution with k = 0.}   \hfill \\
+Has forgetting/memoryless property. $P(T > t+s | T > t) = \frac{P(T > t+s \cap T > t)}{P(T>t)}$.  
+That's vanilla conditional probability.  
+$= \frac{P(T > s)}{P(T>t)} = \frac{exp(-\lambda (t+s))}{exp(-\lambda t)} = \exp(-\lambda s) = P(T>s)$
+
+\subsection{Adding Exponentials}
+{\tiny (11/25 Lec, 26.5 of Wk8)}  The time to the first event is $T_1$.  This is $X_1 =$ Expo($\lambda$) with mean =  $\mathbb{E}(T_n) = 1/\lambda$ and variance $1/\lambda^2$.   \hfill \\
+Now string a bunch together.  $T_n$ is the time to the $n^{th}$ event, $X_i$ is the time between the $i^{th}$ and $i-1^{th}$ event.  See diagram in 11/25 notes.     \hfill \\
+$T_n = \sum_1^{n} X_i$ where $X_i$ are independent (? because times don't overlap).  \hfill \\
+$\mathbb{E}(T_n) = n \mathbb{E}(T_i) = n (1/ \lambda)$   \hfill \\
+Var$(T_n) = n \mbox{Var}(X_i) = n/\lambda^2$  \hfill \\
+Want to get the PDF, but let's start with the CDF.   
+\begin{align*}
+	P(T_n \leq t) &= P( \mbox{at least n events in (0,t)} ) \\
+		&= \sum_{j=n}^ \infty P( \mbox{J events in (0, t)}) \\
+		&= \sum_{j=n}^\infty \frac{e^{- \lambda t (\lambda t)^j}}{j!} \\
+		& \mbox{differentiate (in principle) gives the gamma distribution} \\
+	f_{T_n} &=  \frac{d}{dt} (F_{T_n}(t)) 	 \\
+	f_{T_n} &= G(n, \lambda) 	\mbox{ n is shape, $\lambda$ is rate}
+\end{align*}
+\textbf{Gamma Distribution:} probability of at least n events/successes in time t. (??)
+{\tiny (Wikipedia:)} a two-parameter family of continuous probability distributions. The common exponential distribution and chi-squared distribution are special cases of the gamma distribution. 
+
+
+
+
+ 
+
+
+	
+
+ 
+
 
 
 
