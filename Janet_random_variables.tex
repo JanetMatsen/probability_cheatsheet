@@ -609,6 +609,17 @@ Subtracting shifts mean but not variance.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Poisson process}
+\textbf{TA definitions}:
+\begin{itemize}
+	\item \textit{E didn't like this} A random set s c[0,T] is distributed according to PP($\lambda$) if s = $\{t_1, t_2, \dots , t_n\}$ and n is Po($\lambda T$).  Longer time and higher intensity lead to more events.  There are no other requirements.  ????
+	\item \textit{There was another but it used vocabulary/concepts we haven't done}
+\end{itemize}
+
+TA notes: 
+Note that the busses coming at random times are modeled as Poisson processes.  
+Can take any bus therefore some aggregation of these. 
+Sums of independent Poisson are Poisson.  Unions of Poisson are Poisson.  {\tiny (TA 11/30 lecture)}
+
 \textbf{Things based on Poisson process}:
 \begin{itemize}
 	\item exponential 
@@ -616,7 +627,7 @@ Subtracting shifts mean but not variance.
 
 Internet tidbids: 
 \begin{itemize}
-	\item Several important probability distributions arise naturally from the Poisson processÑthe Poisson distribution, the exponential distribution, and the gamma distribution. % http://www.math.uah.edu/stat/poisson/
+	\item Several important probability distributions arise naturally from the Poisson process - the Poisson distribution, the exponential distribution, and the gamma distribution. % http://www.math.uah.edu/stat/poisson/
 	\item In some sense, the Poisson process is a continuous time version of the Bernoulli trials process  % http://www.math.uah.edu/stat/poisson/Introduction.html
 \end{itemize}
 
@@ -648,13 +659,15 @@ See notes for P(3 people share).  n is large and p is smaller, so Poisson a bett
  \hfill \\
  
  \textbf{Adding Poisson}.  If $s_1$ and $s_2$ are non-overlapping time intervals and $X_1 = Po(\lambda s_1)$ and $X_2 = Po(\lambda s_2)$ then $X_1$ + $X_2$ = total number of events in times s = $s_1 + s_2$ then $X_1$ + $X_2 = Po(\lambda s)$.
- And if you sum up n $X_i$s as Y, by CLT $frac{Y - n \mu}{\sqrt(n \mu)}$ is approx N(0,1).  
+ And if you sum up n $X_i$s as Y, by CLT $\frac{Y - n \mu}{\sqrt{n \mu}}$ is approx N(0,1).  
   {\tiny (11/20 Lec)}  \hfill \\
   ?? What if your lambdas are different?  \hfill \\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Poisson Distribution}
+Like binomial with $\lambda = np$ and $n \to \infty$ {\tiny (TA 11/30 lecture)} \hfill \\
+
 One of the distributions that you can derive from the Poisson process.  -- Erick.   \hfill \\
 
 % http://individual.utoronto.ca/zheli/poisson.pdf
@@ -690,6 +703,9 @@ Note that $np = \lambda$ \hfill \\
 We derived $P(X=k) = \frac{\mu ^k}{k!} e^{-\mu}$ in 11/18 Lecture.  From Binomial as N large but p small. \hfill \\
 
 \subsection{Adding Poissons}
+{\tiny (11/25 TA Lecture)} 
+If $X \sim Po(\lambda_X)$ and  $Y \sim Po(\lambda_Y)$ and X and Y are independent then $X + Y \sim Po(\lambda_X + \lambda_Y)$.  {\tiny Written again on 12/2 as:}  $X \sim Po(\mu)$, $Y \sim Po(\nu)$, $X+Y \sim Po(\mu + /nu)$ 
+
 {\tiny (11/20 Lec)}  If you have two non-overlapping time intervals $S_1$ and $S_2$ ($S = S_1 + S_2$) then they are independent because they are non overlapping.  
 Say $X_1 =  Po(\lambda S_1)$ and $X_2 =  Po(\lambda S_2)$.  
 Then $X_1 + X_2$ events in time $S = S_1 + S_2$ is Po($\lambda S$).    \hfill \\
@@ -697,6 +713,7 @@ In general for independent $X_i \sim Po(\lambda S_i)$, $\sum_{1}^{k} X_i$ is Poi
 Similarly if $X_1 + \dots + X_n$ are independent Po($\mu$), $Y = \sum_{1}{n}X_i$ is Poisson with mean $n \mu$ and variance  $n \mu$.  So b the Central Limit Theorem $\frac{Y - n \mu}{\sqrt(n \mu)}$ is approx N(0,1).    \hfill \\
 
 \subsection{Adding Poissons and knowing the total number}
+TA mumble on 12/7: If someone gives us info about a um of 2 R.V.s and asks us to say something about 1 R.V. then we use Binomial, not Poisson.  \hfill \\
 {\tiny (Bus example from 11/25)}.  
 If you know the number of red busses and blue busses is n, what is the probability that the number of red busses is k? 
 Each process is Po$(\lambda_i t)$ and independent.  The total is Po($\sum \lambda_i t$).  
@@ -712,6 +729,9 @@ Each process is Po$(\lambda_i t)$ and independent.  The total is Po($\sum \lambd
 		&= {n \choose k} \frac{\lambda}{\lambda + \mu} (\frac{\mu}{\lambda + \mu})^k  \\
 		&= Bin(n, \frac{\lambda}{\lambda + \mu}) \\
 \end{align*} 
+{\tiny Note: this binomial dist was also derived on 12/2}  \hfill \\
+Addition: $\sum_x P_X(x \mid W=w) = \sum_x \frac{P(X=x, W=w)}{P(W=w)} = \frac{P(W=w)}{p(W=w)} = 1$  \hfill \\
+ \hfill \\
 
 Special case of next 1 bus:  \hfill \\
 Given next bus is R or B, P(red) = $\lambda/(\lambda + \mu)$ = $3/(3+2) = 0.6$ \hfill \\
@@ -729,7 +749,7 @@ Given exactly 1 bus in the next t hours, \underline{when} does it occur?  Use CD
 		&= \frac{ \exp({-\lambda s})(\lambda s) \exp({-\lambda (t-s))}}  {\exp({-\lambda t})(\lambda t)} \\
 		&= s/t
 \end{align*}
-To get the density, differentiate.  $f_T(s) = 1/$ for $0 \leq s \leq t$ and 0 otherwise. 
+To get the density, differentiate.  $f_T(s) = 1/$ for $0 \leq s \leq t$ and 0 otherwise.   {\tiny This was re-derived on 12/2.}
 
 \subsection{Conditioning on total \# with one process}
 {\tiny (Bus example from 11/25)}.  Green buses come at rate 4/hour.  \hfill \\
@@ -790,6 +810,18 @@ Has forgetting/memoryless property. $P(T > t+s | T > t) = \frac{P(T > t+s \cap T
 That's vanilla conditional probability.  
 $= \frac{P(T > s)}{P(T>t)} = \frac{exp(-\lambda (t+s))}{exp(-\lambda t)} = \exp(-\lambda s) = P(T>s)$
 
+\subsection{Min of 2 Exponentials}
+{\tiny (11/30 TA Lec)} If $Y_1 \sim expo(2/hr)$ and $Y_2 \sim expo(4/hr)$ and $Y_1$ and $Y_2$ are independent then min($Y_1,Y_2) \sim expo(6/hr)$ 
+
+\subsection{$P(Y_{min} > y)$}
+{\tiny (11/30 TA Lec)}  
+\begin{align*}
+	P(Y_{min} > y) &= P(Y_1 > y \mbox{ and } Y_2 < y) \\
+		&= P(Y_1 > y)P(Y_2 > Y)  \\
+		&= exp(-\frac{4}{\mbox{hr}} y) exp(-\frac{2}{\mbox{hr}} y) \\
+		&= exp(-\frac{6}{\mbox{hr}} y)
+\end{align*}
+
 \subsection{Adding Exponentials}
 {\tiny (11/25 Lec, 26.5 of Wk8)}  The time to the first event is $T_1$.  This is $X_1 =$ Expo($\lambda$) with mean =  $\mathbb{E}(T_n) = 1/\lambda$ and variance $1/\lambda^2$.   \hfill \\
 Now string a bunch together.  $T_n$ is the time to the $n^{th}$ event, $X_i$ is the time between the $i^{th}$ and $i-1^{th}$ event.  See diagram in 11/25 notes.     \hfill \\
@@ -807,6 +839,55 @@ Want to get the PDF, but let's start with the CDF.
 \end{align*}
 \textbf{Gamma Distribution:} probability of at least n events/successes in time t. (??)
 {\tiny (Wikipedia:)} a two-parameter family of continuous probability distributions. The common exponential distribution and chi-squared distribution are special cases of the gamma distribution. 
+
+\subsection{Adding exponentials and knowing the total}
+{\tiny (12/4 Lecture)}  $X \sim expo(\lambda)$, $Y \sim expo(\lambda)$.  
+W = X + Y = time for both of them to happen.  
+Note that X and W are not independent.
+Would be gamma with param 2 but just think of them as sum of 2 exponentials.    \hfill \\
+Previously derived: $(X | W=w)$ is $U[0,w]$.  (PDF = constant 1/w).  \hfill \\
+ So $P(X \leq x \mid W = w) = x/w$ for $0 \leq x \leq w$.  (The cdf) \hfill \\
+ \hfill \\
+ 
+ Now let $V = \frac{X}{X+Y} = \frac{X}{W}$ and consider V and W. \hfill \\
+ \begin{align*}
+ 	P(V \leq v \mid W=w) &= P(X/W \leq v \mid W=w) \\
+		&= P(X \leq vw \mid W=w) \\
+		&= \frac{vw}{w} \\
+		&= v \mbox{ for } 0 \leq vw \leq w \\
+	\mbox{ differentiating:} & \\
+	f_V(v \mid W=w) &= 1
+ \end{align*}
+ \textbf{W, V are independent}, because neither function nor range depends on w.  \hfill \\
+ 
+ Do again using conditional probability. 
+ {\tiny (12/7 TA lecture)} $X, Y \sim expo(2)$.  Define $W \equiv X + Y$ and look at $f_X \mid W(x,w)$. 
+ \begin{align*}
+ 	f_{X|W}(x,w) & \equiv \frac{f_{X,W}(x,w)}{f_W(w)} \\
+		& f_W(w): \mbox{ sum of 2 exponentials is gamma.} \\
+		&=  \frac{f_{X,Y}(x, w-x)}{4w \cdot \mbox{exp}(-2w)} \\
+		&=  \frac{2\cdot \mbox{exp}(-2w) 2\cdot \mbox{exp}(-2w)}{4w \cdot \mbox{exp}(-2w)} \\
+		&=  \frac{1}{w} \mbox{ for } x < w, 0 < x  \\
+		& \mbox{ still have to pay attention to range.}
+ \end{align*}
+ $X \mid W$ is U$[0,W]$.  \hfill \\
+ It is a valid pdf for x since $\int_0^w 1/w dx = w/w = 1$
+
+\section{Conditional Statements \& Random Variables}
+Continuous: $f_{X \mid Y}(x \mid y) = \frac{f_{X,Y}(x,y)}{f_Y(y)}$ \hfill \\
+Note: $f_{X \mid Y}(x \mid y) = f_{X \mid Y}(x) = f_X(x \mid Y=y)$
+
+If X doesn't depend on Y: \textbf{(independence)} \hfill \\
+\textit{discrete}:  \hfill \\
+$P_X(x \mid Y=y) = \frac{p_{X,Y}(x,y)}{p_Y(y)} = \frac{p_X(x) p_Y(y)}{p_Y(y)}  = p_X(x)$  \hfill \\
+\textit{continuous}:  \hfill \\
+$f_X(x \mid Y=y) = \frac{f_{X,Y}(x,y)}{f_Y(y)} = \frac{f_X(x) f_Y(y)}{f_Y(y)} = f_X(x)$  \hfill \\
+If we find $f_{X \mid Y}(x \mid y)$ does not depend on y, they X and Y are independent.
+%If $y = g_1(x)$ ($f_X(x \mid Y=y)$ doesn't depend on y):  \hfill \\
+
+\section{Conditional Expectation}
+Elizabeth: $E(Y) = E(E(Y \mid X))$. 
+Erick: $E(Y) = E(E(Y \mid X)) = E_X(E_Y(Y \mid X))$.  $Y \mid X$ is described by $f_{Y \mid X}$ Integrate Y out first. 
 
 
 
